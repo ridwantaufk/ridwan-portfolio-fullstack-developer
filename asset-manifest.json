@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/ridwan-portfolio-fullstack-developer/static/css/main.ffc35434.css",
-    "main.js": "/ridwan-portfolio-fullstack-developer/static/js/main.caf71378.js",
-    "static/js/453.ace21015.chunk.js": "/ridwan-portfolio-fullstack-developer/static/js/453.ace21015.chunk.js",
+    "main.css": "/ridwan-portfolio-fullstack-developer/static/css/main.ad9bc31f.css",
+    "main.js": "/ridwan-portfolio-fullstack-developer/static/js/main.23e0b915.js",
+    "static/js/206.020cae30.chunk.js": "/ridwan-portfolio-fullstack-developer/static/js/206.020cae30.chunk.js",
     "static/media/sparepart.png": "/ridwan-portfolio-fullstack-developer/static/media/sparepart.a929df70a93a1e291f1c.png",
     "static/media/landingpage.png": "/ridwan-portfolio-fullstack-developer/static/media/landingpage.9f034b3ec7fae5e2fb1d.png",
     "static/media/faceRecognition.png": "/ridwan-portfolio-fullstack-developer/static/media/faceRecognition.559b6e4bd1eecf014e94.png",
@@ -13,13 +13,10 @@
     "static/media/about.png": "/ridwan-portfolio-fullstack-developer/static/media/about.aee0f771fbfc1e7b8fa8.png",
     "static/media/home-bg.jpg": "/ridwan-portfolio-fullstack-developer/static/media/home-bg.dc52d5d40a40b13154b0.jpg",
     "static/media/pre.svg": "/ridwan-portfolio-fullstack-developer/static/media/pre.4410c5baaa673cc131da.svg",
-    "index.html": "/ridwan-portfolio-fullstack-developer/index.html",
-    "main.ffc35434.css.map": "/ridwan-portfolio-fullstack-developer/static/css/main.ffc35434.css.map",
-    "main.caf71378.js.map": "/ridwan-portfolio-fullstack-developer/static/js/main.caf71378.js.map",
-    "453.ace21015.chunk.js.map": "/ridwan-portfolio-fullstack-developer/static/js/453.ace21015.chunk.js.map"
+    "index.html": "/ridwan-portfolio-fullstack-developer/index.html"
   },
   "entrypoints": [
-    "static/css/main.ffc35434.css",
-    "static/js/main.caf71378.js"
+    "static/css/main.ad9bc31f.css",
+    "static/js/main.23e0b915.js"
   ]
 }
