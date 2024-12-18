@@ -12,7 +12,7 @@ function ResumeNew() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const pdfPath = `${window.location.origin}/Assets/CV_Ridwan_Taufik_Programmer.pdf`;
+  const pdfPath = `${window.location.origin}/ridwan-portfolio-fullstack-developer/Assets/CV_Ridwan_Taufik_Programmer.pdf`;
 
   // PDF A4 size in pixels (8.27 x 11.69 inches at 96 DPI)
   const pdfMaxWidth = 794; // Width of A4 in pixels
