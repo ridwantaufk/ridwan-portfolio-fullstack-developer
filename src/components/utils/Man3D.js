@@ -6,7 +6,9 @@ import { Suspense } from "react";
 
 // Komponen untuk menampilkan model 3D
 function ProgrammerModel() {
-  const { scene, animations } = useGLTF("/models/programmer.glb"); // Path model .glb
+  const { scene, animations } = useGLTF(
+    process.env.PUBLIC_URL + "/models/programmer.glb"
+  );
 
   React.useEffect(() => {
     if (animations.length > 0) {
