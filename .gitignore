@@ -9,7 +9,9 @@
 /coverage
 
 # production
+# Jangan ignore build ketika akan deploy ke gh-pages
 /build
+!/build
 
 # misc
 .DS_Store
