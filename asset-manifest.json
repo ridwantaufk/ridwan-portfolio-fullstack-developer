@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a449e6d4.css",
+    "main.js": "/static/js/main.8df4babb.js",
+    "static/js/453.ace21015.chunk.js": "/static/js/453.ace21015.chunk.js",
+    "static/media/sparepart.png": "/static/media/sparepart.a929df70a93a1e291f1c.png",
+    "static/media/landingpage.png": "/static/media/landingpage.9f034b3ec7fae5e2fb1d.png",
+    "static/media/faceRecognition.png": "/static/media/faceRecognition.559b6e4bd1eecf014e94.png",
+    "static/media/brownies.png": "/static/media/brownies.ff3e3d94a3f91491fc5e.png",
+    "static/media/traininginformationsystem.png": "/static/media/traininginformationsystem.06a291a28e0482b5a226.png",
+    "static/media/hospitalinformationsystem.png": "/static/media/hospitalinformationsystem.b8d5ee187e586b04b5f1.png",
+    "static/media/pp_ridwan.jpg": "/static/media/pp_ridwan.84b6c013e9f44e13a7c4.jpg",
+    "static/media/about.png": "/static/media/about.aee0f771fbfc1e7b8fa8.png",
+    "static/media/home-bg.jpg": "/static/media/home-bg.dc52d5d40a40b13154b0.jpg",
+    "static/media/pre.svg": "/static/media/pre.4410c5baaa673cc131da.svg",
+    "index.html": "/index.html",
+    "main.a449e6d4.css.map": "/static/css/main.a449e6d4.css.map",
+    "main.8df4babb.js.map": "/static/js/main.8df4babb.js.map",
+    "453.ace21015.chunk.js.map": "/static/js/453.ace21015.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a449e6d4.css",
+    "static/js/main.8df4babb.js"
+  ]
+}
