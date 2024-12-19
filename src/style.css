@@ -767,8 +767,8 @@ button:focus {
 
 .avatar-img {
   border-radius: 50%;
-  width: 100%; /* Atur ukuran lebar sesuai kebutuhan */
-  height: auto; /* Jaga agar tinggi gambar proporsional */
-  max-width: 150px; /* Maksimal lebar gambar agar tidak terlalu besar */
-  object-fit: cover; /* Pastikan gambar tidak terdistorsi */
+  width: 100%;
+  height: auto;
+  max-width: 150px;
+  object-fit: cover;
 }
