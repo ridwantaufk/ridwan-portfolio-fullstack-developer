@@ -772,3 +772,243 @@ button:focus {
   max-width: 150px;
   object-fit: cover;
 }
+
+/* Base Styling for List Group */
+.list-group {
+  /* transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out; */
+}
+
+/* Base Styling for List Group Items */
+.list-group-item {
+  padding: 15px;
+  margin: 5px 0;
+  border: none;
+  background-color: transparent;
+  /* transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out; */
+}
+
+/* Rainbow Moving Shadow Effect */
+@keyframes rainbow-shadow {
+  0% {
+    box-shadow: 0 0 10px red, 0 0 20px orange, 0 0 30px yellow;
+  }
+  25% {
+    box-shadow: 0 0 10px green, 0 0 20px blue, 0 0 30px indigo;
+  }
+  50% {
+    box-shadow: 0 0 10px violet, 0 0 20px purple, 0 0 30px red;
+  }
+  75% {
+    box-shadow: 0 0 10px orange, 0 0 20px yellow, 0 0 30px green;
+  }
+  100% {
+    box-shadow: 0 0 10px blue, 0 0 20px indigo, 0 0 30px violet;
+  }
+}
+
+/* Hover Effect for List Group Item */
+.list-group-item:hover {
+  animation: rainbow-shadow 2s infinite; /* Apply the rainbow shadow animation */
+  background-color: rgba(108, 117, 125, 0.1);
+}
+
+/* Hover Effect for Entire List Group */
+.list-group:hover {
+  animation: rainbow-shadow 2s infinite; /* Apply the rainbow shadow animation to the whole group */
+}
+
+/* Add this CSS for rainbow moving shadow effect on the button */
+/* Keyframes for the rainbow moving shadow effect */
+@keyframes rainbow-shadow-button {
+  0% {
+    box-shadow: 0 0 10px red, 0 0 15px orange, 0 0 20px yellow;
+  }
+  25% {
+    box-shadow: 0 0 10px green, 0 0 15px blue, 0 0 20px indigo;
+  }
+  50% {
+    box-shadow: 0 0 10px violet, 0 0 15px purple, 0 0 20px red;
+  }
+  75% {
+    box-shadow: 0 0 10px orange, 0 0 15px yellow, 0 0 20px green;
+  }
+  100% {
+    box-shadow: 0 0 10px blue, 0 0 15px indigo, 0 0 20px violet;
+  }
+}
+
+/* Apply rainbow shadow effect when hovering the button */
+.fork-btn-inner {
+  animation: rainbow-shadow-button 5s infinite; /* Apply the rainbow shadow animation */
+  background-color: rgba(108, 117, 125, 0.1);
+  padding: 10px 20px;
+  border: none;
+  outline: none; /* Prevent focus outline from showing */
+}
+
+.fork-btn-inner:focus {
+  outline: none; /* Prevent the default focus outline from appearing */
+}
+
+/* Style for Nav.Link */
+.nav-link {
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 3px; /* Adjust space for the thinner underline */
+  display: inline-block; /* Ensure the element behaves like a block so we can control its size */
+}
+
+/* Pseudo-element to create the underline */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%; /* Initially, place it at the 50% point from the left */
+  width: 0%; /* Initially, the width is 0 */
+  height: 1px; /* Reduced thickness for a thinner underline */
+  background: red; /* Initial color */
+  transform: translateX(
+    -50%
+  ); /* Shift it left to ensure it starts from the 50% point */
+  transition: width 0.3s ease-in-out; /* Smooth transition for width expansion */
+  animation: rainbow-underline 2s linear infinite; /* Apply rainbow color animation */
+}
+
+/* Keyframes for the rainbow effect */
+@keyframes rainbow-underline {
+  0% {
+    background: red;
+  }
+  14% {
+    background: orange;
+  }
+  28% {
+    background: yellow;
+  }
+  42% {
+    background: green;
+  }
+  57% {
+    background: blue;
+  }
+  71% {
+    background: indigo;
+  }
+  85% {
+    background: violet;
+  }
+  100% {
+    background: red;
+  }
+}
+
+/* On hover, expand the underline to full width */
+.nav-link:hover::after {
+  width: 100%; /* Make the underline expand to full width */
+  left: 0; /* Move the underline to start from the left side */
+  transform: translateX(
+    0
+  ); /* Reset the translation to align it properly with the text */
+}
+/* Menyesuaikan untuk perangkat kecil */
+@media (max-width: 767px) {
+  .resume-section {
+    padding: 10px;
+  }
+
+  .pdf-container {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .pdf-container canvas {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* CSS untuk responsif pada layar kecil dan tablet */
+@media (max-width: 768px) {
+  .pdf-container {
+    width: 100%; /* Untuk layar kecil, biarkan lebar penuh */
+    margin: 0 auto;
+    overflow: auto; /* Tambahkan scroll jika konten terlalu besar */
+  }
+
+  .pdf-container canvas {
+    width: 100%; /* Pastikan canvas mengisi kontainer */
+    height: auto; /* Menjaga rasio aspek PDF */
+  }
+}
+
+/* Untuk tablet dan perangkat besar */
+@media (min-width: 768px) {
+  .pdf-container {
+    width: 80%; /* Atur sesuai dengan kebutuhan */
+    margin: 0 auto;
+  }
+
+  .pdf-container canvas {
+    width: 60%;
+    height: auto;
+  }
+}
+
+/* Efek box-shadow warna-warni saat normal (tidak hover) */
+.download-btn {
+  position: relative;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background: black;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: box-shadow 0.6s ease-in-out, transform 0.4s ease; /* Transisi halus */
+  box-shadow: 0 0 6px rgba(255, 0, 0, 0.4), 0 0 6px rgba(0, 255, 0, 0.4),
+    0 0 6px rgba(0, 0, 255, 0.4); /* Efek cahaya tipis */
+  animation: shadow-animation-normal 3s infinite ease-in-out; /* Animasi cahaya */
+}
+
+/* Efek box-shadow warna-warni saat hover */
+.download-btn:hover {
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.5), 0 0 12px rgba(0, 255, 0, 0.5),
+    0 0 12px rgba(0, 0, 255, 0.5), 0 0 15px rgba(255, 255, 0, 0.6),
+    0 0 18px rgba(0, 255, 255, 0.6), 0 0 20px rgba(255, 0, 255, 0.6); /* Efek lebih mencolok tapi tipis */
+  animation: shadow-animation-hover 1.5s infinite alternate; /* Animasi lebih cepat */
+}
+
+/* Animasi warna-warni untuk keadaan normal */
+@keyframes shadow-animation-normal {
+  0% {
+    box-shadow: 0 0 6px rgba(255, 0, 0, 0.4), 0 0 6px rgba(0, 255, 0, 0.4),
+      0 0 6px rgba(0, 0, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 8px rgba(0, 255, 0, 0.5), 0 0 8px rgba(0, 0, 255, 0.5),
+      0 0 8px rgba(255, 0, 0, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 6px rgba(255, 0, 0, 0.4), 0 0 6px rgba(0, 255, 0, 0.4),
+      0 0 6px rgba(0, 0, 255, 0.4);
+  }
+}
+
+/* Animasi warna-warni untuk keadaan hover */
+@keyframes shadow-animation-hover {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5), 0 0 10px rgba(0, 255, 0, 0.5),
+      0 0 10px rgba(0, 0, 255, 0.5), 0 0 12px rgba(255, 255, 0, 0.6),
+      0 0 12px rgba(0, 255, 255, 0.6), 0 0 12px rgba(255, 0, 255, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(0, 255, 0, 0.6), 0 0 12px rgba(0, 0, 255, 0.6),
+      0 0 12px rgba(255, 0, 0, 0.6), 0 0 15px rgba(255, 255, 0, 0.7),
+      0 0 15px rgba(0, 255, 255, 0.7), 0 0 15px rgba(255, 0, 255, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5), 0 0 10px rgba(0, 255, 0, 0.5),
+      0 0 10px rgba(0, 0, 255, 0.5), 0 0 12px rgba(255, 255, 0, 0.6),
+      0 0 12px rgba(0, 255, 255, 0.6), 0 0 12px rgba(255, 0, 255, 0.6);
+  }
+}

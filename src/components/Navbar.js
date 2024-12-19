@@ -89,6 +89,7 @@ function NavBar() {
                 href="https://github.com/ridwantaufk"
                 target="_blank"
                 className="fork-btn-inner"
+                onFocus={(e) => e.target.blur()} // Prevent focus style from interrupting animation
               >
                 <CgGitFork style={{ fontSize: "1.2em" }} />{" "}
                 <AiFillStar style={{ fontSize: "1.1em" }} />

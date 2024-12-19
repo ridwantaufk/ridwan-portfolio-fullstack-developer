@@ -1,43 +1,70 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Container, Row, Button } from "react-bootstrap";
 import { AiOutlineDownload } from "react-icons/ai";
+import { GlobalWorkerOptions, getDocument } from "pdfjs-dist";
+import "pdfjs-dist/web/pdf_viewer.css"; // Pastikan path ini benar
+
+// Tentukan sumber worker PDF
+GlobalWorkerOptions.workerSrc =
+  "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js";
 
 function ResumeNew() {
-  const [width, setWidth] = useState(window.innerWidth);
+  const pdfContainerRef = useRef(null);
 
   useEffect(() => {
-    const handleResize = () => setWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
+    const loadingTask = getDocument(
+      `${window.location.origin}/ridwan-portfolio-fullstack-developer/Assets/CV_Ridwan_Taufik_Programmer.pdf`
+    );
 
-    return () => window.removeEventListener("resize", handleResize);
+    loadingTask.promise.then((pdf) => {
+      const totalPages = pdf.numPages;
+
+      // Bersihkan pdfContainerRef agar tidak ada halaman yang terduplikasi
+      pdfContainerRef.current.innerHTML = "";
+
+      // Render setiap halaman dalam PDF
+      for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
+        pdf.getPage(pageNum).then((page) => {
+          const scale = 1.5;
+          const viewport = page.getViewport({ scale });
+
+          const canvas = document.createElement("canvas");
+          const context = canvas.getContext("2d");
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+
+          page.render({
+            canvasContext: context,
+            viewport: viewport,
+          });
+
+          // Tambahkan canvas yang baru saja dirender ke pdfContainerRef
+          pdfContainerRef.current.appendChild(canvas);
+        });
+      }
+    });
   }, []);
-
-  const pdfPath = `${window.location.origin}/ridwan-portfolio-fullstack-developer/Assets/CV_Ridwan_Taufik_Programmer.pdf`;
-
-  // PDF A4 size in pixels (8.27 x 11.69 inches at 96 DPI)
-  const pdfMaxWidth = 794; // Width of A4 in pixels
-  const previewWidth =
-    width > pdfMaxWidth ? `${pdfMaxWidth}px` : `${width * 0.9}px`; // Responsive adjustment
 
   return (
     <div>
       <Container fluid className="resume-section">
-        {/* Download Button */}
+        {/* Tombol Download */}
         <Row
           style={{
             justifyContent: "center",
             position: "relative",
-            marginBottom: "30px", // Add space between button and preview
+            marginBottom: "30px", // Tambahkan spasi antara tombol dan preview
           }}
         >
           <Button
             variant="primary"
-            href={pdfPath}
+            href={`${window.location.origin}/ridwan-portfolio-fullstack-developer/Assets/CV_Ridwan_Taufik_Programmer.pdf`}
             target="_blank"
-            download="CV_Ridwan_Taufik_Programmer.pdf" // Menambahkan atribut download
+            download="CV_Ridwan_Taufik_Programmer.pdf"
+            className="download-btn"
             style={{
               maxWidth: "250px",
-              padding: "10px 20px", // Adjust padding for better appearance
+              padding: "10px 20px",
             }}
           >
             <AiOutlineDownload />
@@ -45,32 +72,18 @@ function ResumeNew() {
           </Button>
         </Row>
 
-        {/* Display the PDF */}
+        {/* PDF Rendering dengan Canvas */}
         <Row style={{ justifyContent: "center" }}>
           <div
+            ref={pdfContainerRef}
+            className="pdf-container"
             style={{
               maxWidth: "100%",
-              width: previewWidth,
-              overflow: "hidden",
+              width: "90%", // Atau sesuaikan dengan previewWidth jika diperlukan
+              overflow: "auto", // Pastikan kontainer dapat di-scroll
+              margin: "0 auto", // Pusatkan elemen
             }}
-          >
-            <object
-              data={pdfPath}
-              type="application/pdf"
-              width="100%"
-              height="1123px" // Adjust height as needed for A4
-              style={{
-                borderRadius: "15px", // Optional: Rounded corners
-              }}
-            >
-              <p>
-                Your browser does not support PDFs.{" "}
-                <a href={pdfPath} target="_blank" rel="noopener noreferrer">
-                  Download the PDF
-                </a>
-              </p>
-            </object>
-          </div>
+          />
         </Row>
       </Container>
     </div>

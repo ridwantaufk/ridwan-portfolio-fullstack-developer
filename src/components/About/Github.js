@@ -9,47 +9,70 @@ import {
   Spinner,
 } from "react-bootstrap";
 import axios from "axios";
+import CryptoJS from "crypto-js";
+
+const decryptToken = (encryptedToken) => {
+  const bytes = CryptoJS.AES.decrypt(encryptedToken, "secret-key");
+  const decrypted = bytes.toString(CryptoJS.enc.Utf8);
+  return decrypted;
+};
 
 function Github() {
   const [githubData, setGithubData] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Menggunakan token dari variabel lingkungan
-  const token = process.env.REACT_APP_GITHUB_TOKEN;
+  const decryptedToken = decryptToken(
+    "U2FsdGVkX18pEWAT8U85SNN+PgrYvqJ7VmvqvHniOUZXgHjgxziWS5yk9L87+goqSV8s+lYplyoCoVNwFFZhOA=="
+  );
 
   useEffect(() => {
     const fetchData = async () => {
+      let allEvents = [];
+      let page = 1;
+
       try {
-        const response = await axios.get(
-          "https://api.github.com/users/ridwantaufk/events",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+        while (true) {
+          const response = await axios.get(
+            `https://api.github.com/users/ridwantaufk/events?page=${page}`,
+            {
+              headers: {
+                Authorization: `${decryptedToken.trim()}`,
+              },
+            }
+          );
+
+          if (response.data.length === 0) {
+            break;
           }
-        );
-        setGithubData(response.data);
+
+          allEvents = [...allEvents, ...response.data];
+          page++;
+        }
+
+        setGithubData(allEvents);
+        console.log("response : ", allEvents);
       } catch (error) {
         console.error("Error fetching GitHub data:", error);
-        setGithubData([]); // Set githubData menjadi array kosong jika terjadi error
+        setGithubData([]);
       } finally {
-        setLoading(false); // Set loading menjadi false setelah data selesai diambil
+        setLoading(false);
       }
     };
 
     fetchData();
-  }, [token]); // Gunakan token sebagai dependensi jika perlu
+  }, [decryptedToken]);
 
   return (
     <Row className="justify-content-center" style={{ paddingBottom: "20px" }}>
-      <Col xs={12} md={8} lg={6}>
+      <Col xs={12} md={10} lg={8}>
+        {" "}
+        {/* Adjusted column size for better alignment */}
         <h1
           className="project-heading text-center"
           style={{ paddingBottom: "20px", color: "white" }}
         >
           <strong className="purple">GitHub</strong> Activity
         </h1>
-
         {loading ? (
           <div className="text-center">
             <Spinner animation="border" role="status" variant="primary" />
@@ -65,45 +88,68 @@ function Github() {
                 <Card.Header
                   as="h5"
                   className="text-center"
-                  style={{ backgroundColor: "transparent", color: "white" }}
+                  style={{
+                    backgroundColor: "transparent",
+                    color: "white",
+                    marginBottom: "10px",
+                  }}
                 >
                   Recent GitHub Events
                 </Card.Header>
                 <ListGroup
                   variant="flush"
                   style={{
-                    maxHeight: "400px",
+                    maxHeight: "500px", // Adjusted to give more space for content
                     overflowY: "auto",
                     backgroundColor: "transparent",
                     color: "white",
+                    padding: "0",
+                    border: "none",
+                    borderRadius: "15px",
                   }}
                 >
                   {githubData.map((event, index) => (
                     <ListGroupItem
                       key={index}
                       className="d-flex justify-content-between align-items-center"
-                      style={{ backgroundColor: "transparent", border: "none" }}
+                      style={{
+                        backgroundColor: "transparent",
+                        border: "none",
+                        padding: "15px", // Added more padding for readability
+                        wordWrap: "break-word",
+                        whiteSpace: "normal",
+                        overflow: "visible",
+                        transition: "box-shadow 0.3s ease-in-out", // Smooth transition for box-shadow
+                      }}
                     >
-                      <div>
+                      <div
+                        className="d-flex flex-column"
+                        style={{
+                          maxWidth: "70%", // Adjusted for better alignment
+                          overflow: "hidden",
+                        }}
+                      >
                         <strong>{event.type}</strong>
                         <p style={{ marginBottom: "0", color: "#6c757d" }}>
                           {event.repo.name}
                         </p>
                       </div>
-                      <span style={{ color: "#6c757d" }}>
-                        {new Date(event.created_at).toLocaleString()}
-                      </span>
-                      <Button
-                        variant="link"
-                        href={event.repo.url.replace(
-                          "api.github.com",
-                          "github.com"
-                        )}
-                        target="_blank"
-                        style={{ color: "#6c757d" }}
-                      >
-                        View Repo
-                      </Button>
+                      <div className="d-flex flex-column align-items-end">
+                        <span style={{ color: "#6c757d" }}>
+                          {new Date(event.created_at).toLocaleString()}
+                        </span>
+                        <Button
+                          variant="link"
+                          href={event.repo.url.replace(
+                            "api.github.com",
+                            "github.com"
+                          )}
+                          target="_blank"
+                          style={{ color: "#6c757d", textAlign: "right" }}
+                        >
+                          View Repo
+                        </Button>
+                      </div>
                     </ListGroupItem>
                   ))}
                 </ListGroup>
