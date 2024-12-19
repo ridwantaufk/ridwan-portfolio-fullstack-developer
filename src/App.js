@@ -17,20 +17,19 @@ import "./style.css";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-// Pastikan menambahkan basename pada BrowserRouter
 function App() {
-  const [load, upadateLoad] = useState(true);
+  const [load, updateLoad] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      upadateLoad(false);
+      updateLoad(false);
     }, 1200);
 
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <Router basename="/ridwan-portfolio-fullstack-developer">
+    <Router>
       <Preloader load={load} />
       <div className="App" id={load ? "no-scroll" : "scroll"}>
         <Navbar />
