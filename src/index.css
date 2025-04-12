@@ -6,3 +6,98 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-image: linear-gradient(to left, rgb(27 20 41), rgb(20 15 35));
 }
+
+/* General styles for skill scale */
+.skill-scale {
+  margin-top: 10px;
+}
+
+.line-with-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0; /* No gap between dots and lines */
+}
+
+.dot-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 8px;
+  height: 8px;
+}
+
+/* Tooltip styling */
+.dot-wrapper::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  font-size: 10px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 999;
+}
+
+/* Show tooltip on hover of the dot only */
+.dot-wrapper:hover::after {
+  opacity: 1;
+}
+
+/* Tetap pertahankan bentuk dot */
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: #ddd;
+  border-radius: 50%;
+  margin: 0;
+}
+
+.line {
+  width: 30px;
+  height: 1px;
+  background-color: #ddd; /* Default color for uncompleted lines (grey) */
+  margin: 0; /* No margin between lines */
+}
+
+/* Beginner (Level 1) - Only the first dot and line are green */
+.skill-scale.beginner .dot:nth-child(1),
+.skill-scale.beginner .line:nth-child(1) {
+  background-color: #4caf50; /* Green for beginner */
+}
+
+/* Medium (Level 2) - First and second dots and lines are green */
+.skill-scale.medium .dot:nth-child(1),
+.skill-scale.medium .line:nth-child(2),
+.skill-scale.medium .dot:nth-child(3) {
+  background-color: #4caf50;
+}
+
+/* Advanced (Level 3) - First, second, and third dots and lines are green */
+.skill-scale.advanced .dot:nth-child(1),
+.skill-scale.advanced .dot:nth-child(2),
+.skill-scale.advanced .dot:nth-child(3),
+.skill-scale.advanced .line:nth-child(1),
+.skill-scale.advanced .line:nth-child(2),
+.skill-scale.advanced .line:nth-child(3) {
+  background-color: #4caf50; /* Green for advanced */
+}
+
+/* Expert (Level 4) - All dots and lines are green */
+.skill-scale.expert .dot:nth-child(1),
+.skill-scale.expert .dot:nth-child(2),
+.skill-scale.expert .dot:nth-child(3),
+.skill-scale.expert .dot:nth-child(4),
+.skill-scale.expert .line:nth-child(1),
+.skill-scale.expert .line:nth-child(2),
+.skill-scale.expert .line:nth-child(3) {
+  background-color: #4caf50; /* Green for expert */
+}

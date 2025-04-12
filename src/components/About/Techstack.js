@@ -7,8 +7,6 @@ import {
   SiPostgresql,
   SiLaravel,
   SiDjango,
-  SiGithub,
-  SiBitbucket,
   SiSocketdotio,
   SiWebrtc,
   SiBootstrap,
@@ -16,106 +14,79 @@ import {
   SiJquery,
   SiHtml5,
   SiCss3,
+  SiGraphql,
+  SiTailwindcss,
+  SiFlask,
+  SiSpringboot,
+  SiAngularjs,
+  SiAngular,
+  SiExpress,
 } from "react-icons/si";
-import { FaPython, FaDocker, FaGit, FaAws } from "react-icons/fa";
+import { FaPython } from "react-icons/fa";
 import { GrMysql } from "react-icons/gr";
-import ReactTooltip from "react-tooltip"; // Import react-tooltip
+import ReactTooltip from "react-tooltip";
 
 function Techstack() {
+  // Data untuk setiap teknologi
+  const techData = [
+    { icon: <SiNextdotjs />, label: "Next.js", skillLevel: "advanced" },
+    { icon: <DiReact />, label: "React.js", skillLevel: "medium" },
+    { icon: <SiGraphql />, label: "GraphQL", skillLevel: "medium" },
+    { icon: <DiNodejs />, label: "Node.js", skillLevel: "medium" },
+    { icon: <SiExpress />, label: "Express.js", skillLevel: "medium" },
+    { icon: <SiVuedotjs />, label: "Vue.js", skillLevel: "medium" },
+    { icon: <SiPostgresql />, label: "PostgreSQL", skillLevel: "medium" },
+    { icon: <SiTailwindcss />, label: "Tailwind", skillLevel: "medium" },
+    { icon: <SiSpringboot />, label: "Springboot", skillLevel: "medium" },
+    { icon: <SiFlask />, label: "Flask", skillLevel: "medium" },
+    { icon: <SiAngular />, label: "Angular", skillLevel: "medium" },
+    { icon: <DiPhp />, label: "PHP", skillLevel: "medium" },
+    { icon: <SiLaravel />, label: "Laravel", skillLevel: "medium" },
+    { icon: <SiDjango />, label: "Django", skillLevel: "medium" },
+    { icon: <SiChakraui />, label: "ChakraUI", skillLevel: "medium" },
+    { icon: <SiBootstrap />, label: "Bootstrap", skillLevel: "medium" },
+    { icon: <SiHtml5 />, label: "HTML5", skillLevel: "medium" },
+    { icon: <SiCss3 />, label: "CSS3", skillLevel: "medium" },
+    { icon: <SiJquery />, label: "Jquery", skillLevel: "medium" },
+    { icon: <FaPython />, label: "Python", skillLevel: "medium" },
+    { icon: <GrMysql />, label: "MySQL", skillLevel: "medium" },
+  ];
+
   return (
     <>
       {/* Tooltip Component */}
       <ReactTooltip effect="solid" delayShow={100} /> {/* Delay 100ms */}
       <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
-        {/* React.js */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="React.js">
-          <DiReact />
-        </Col>
-        {/* Node.js */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="Node.js">
-          <DiNodejs />
-        </Col>
-        {/* Next.js */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="Next.js">
-          <SiNextdotjs />
-        </Col>
-        {/* Vue.js */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="Vue.js">
-          <SiVuedotjs />
-        </Col>
-        {/* PostgreSQL */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="PostgreSQL">
-          <SiPostgresql />
-        </Col>
-        {/* PHP */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="PHP">
-          <DiPhp />
-        </Col>
-        {/* Laravel */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="Laravel">
-          <SiLaravel />
-        </Col>
-        {/* Django */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="Django">
-          <SiDjango />
-        </Col>
-        {/* ChakraUI */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="ChakraUI">
-          <SiChakraui />
-        </Col>
-        {/* Bootstrap */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="Bootstrap">
-          <SiBootstrap />
-        </Col>
-        {/* HTML5 */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="HTML5">
-          <SiHtml5 />
-        </Col>
-        {/* CSS3 */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="CSS3">
-          <SiCss3 />
-        </Col>
-        {/* Jquery */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="Jquery">
-          <SiJquery />
-        </Col>
-        {/* Python */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="Python">
-          <FaPython />
-        </Col>
-        {/* Machine Learning */}
-        <Col
-          xs={4}
-          md={2}
-          className="tech-icons"
-          data-tip="Machine Learning (AWS)"
-        >
-          <FaAws />
-        </Col>
-        {/* Git */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="Git">
-          <FaGit />
-        </Col>
-        {/* GitHub */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="GitHub">
-          <SiGithub />
-        </Col>
-        {/* Bitbucket */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="Bitbucket">
-          <SiBitbucket />
-        </Col>
-        {/* Socket.IO */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="Socket.IO">
-          <SiSocketdotio />
-        </Col>
-        {/* WebRTC */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="WebRTC">
-          <SiWebrtc />
-        </Col>
-        {/* MySQL */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="MySQL">
-          <GrMysql />
-        </Col>
+        {techData.map((tech, index) => (
+          <Col
+            key={index}
+            xs={4}
+            md={2}
+            className="tech-icons"
+            data-tip={tech.label}
+          >
+            {tech.icon}
+            <div className={`skill-scale ${tech.skillLevel}`}>
+              <div className="line-with-dots">
+                <span className="dot-wrapper" data-tip="Pemula">
+                  <span className="dot"></span>
+                </span>
+                <span className="line"></span>
+                <span className="dot-wrapper" data-tip="Medium">
+                  <span className="dot"></span>
+                </span>
+                <span className="line"></span>
+                <span className="dot-wrapper" data-tip="Berpengalaman">
+                  <span className="dot"></span>
+                </span>
+                <span className="line"></span>
+                <span className="dot-wrapper" data-tip="Sangat Mahir">
+                  <span className="dot"></span>
+                </span>
+              </div>
+            </div>
+          </Col>
+        ))}
       </Row>
     </>
   );
