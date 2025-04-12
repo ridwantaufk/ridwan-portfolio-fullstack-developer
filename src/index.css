@@ -1,8 +1,249 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
+
+::selection {
+  background-color: rgba(247, 239, 0, 0.615); /* Ungu */
+  color: white; /* Warna teks putih saat diseleksi */
+}
+
 body {
   margin: 0;
   font-family: "Raleway", serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: linear-gradient(to left, rgb(27 20 41), rgb(20 15 35));
+}
+
+/* General styles for skill scale */
+.skill-scale {
+  margin-top: 10px;
+}
+
+.line-with-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0; /* No gap between dots and lines */
+}
+
+.dot-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 8px;
+  height: 8px;
+}
+
+/* Show tooltip on hover of the dot only */
+.dot-wrapper:hover::after {
+  opacity: 1;
+}
+
+/* Tetap pertahankan bentuk dot */
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: #ddd;
+  border-radius: 50%;
+  margin: 0;
+}
+
+.line {
+  width: 30px;
+  height: 1px;
+  background-color: #ddd; /* Default color for uncompleted lines (grey) */
+  margin: 0; /* No margin between lines */
+}
+
+/* ==================== */
+/* BEGINNER (Level 1)   */
+/* 1 dot, no line       */
+/* ==================== */
+.skill-scale.beginner .line-with-dots span:nth-child(1) .dot {
+  background-color: #4caf50; /* Dot 1 - Pemula */
+}
+
+/* ==================== */
+/* MEDIUM (Level 2)     */
+/* 2 dots, 1 line       */
+/* ==================== */
+.skill-scale.medium .line-with-dots span:nth-child(1) .dot {
+  background-color: #4caf50; /* Dot 1 - Pemula */
+}
+.skill-scale.medium .line-with-dots span:nth-child(3) .dot {
+  background-color: #4caf50; /* Dot 2 - Medium */
+}
+.skill-scale.medium .line-with-dots span:nth-child(2) {
+  background-color: #4caf50; /* Line 1 */
+}
+
+/* ==================== */
+/* ADVANCED (Level 3)   */
+/* 3 dots, 2 lines      */
+/* ==================== */
+.skill-scale.advanced .line-with-dots span:nth-child(1) .dot {
+  background-color: #4caf50; /* Dot 1 - Pemula */
+}
+.skill-scale.advanced .line-with-dots span:nth-child(3) .dot {
+  background-color: #4caf50; /* Dot 2 - Medium */
+}
+.skill-scale.advanced .line-with-dots span:nth-child(5) .dot {
+  background-color: #4caf50; /* Dot 3 - Berpengalaman */
+}
+.skill-scale.advanced .line-with-dots span:nth-child(2) {
+  background-color: #4caf50; /* Line 1 */
+}
+.skill-scale.advanced .line-with-dots span:nth-child(4) {
+  background-color: #4caf50; /* Line 2 */
+}
+
+/* ==================== */
+/* EXPERT (Level 4)     */
+/* 4 dots, 3 lines      */
+/* ==================== */
+.skill-scale.expert .line-with-dots span:nth-child(1) .dot {
+  background-color: #4caf50; /* Dot 1 - Pemula */
+}
+.skill-scale.expert .line-with-dots span:nth-child(3) .dot {
+  background-color: #4caf50; /* Dot 2 - Medium */
+}
+.skill-scale.expert .line-with-dots span:nth-child(5) .dot {
+  background-color: #4caf50; /* Dot 3 - Berpengalaman */
+}
+.skill-scale.expert .line-with-dots span:nth-child(7) .dot {
+  background-color: #4caf50; /* Dot 4 - Sangat Mahir */
+}
+.skill-scale.expert .line-with-dots span:nth-child(2) {
+  background-color: #4caf50; /* Line 1 */
+}
+.skill-scale.expert .line-with-dots span:nth-child(4) {
+  background-color: #4caf50; /* Line 2 */
+}
+.skill-scale.expert .line-with-dots span:nth-child(6) {
+  background-color: #4caf50; /* Line 3 */
+}
+
+select {
+  z-index: 10;
+  position: relative;
+}
+
+.modern-select {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font-size: 14px;
+  appearance: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.modern-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+/* Styling untuk select dengan transparansi */
+.form-select {
+  background-color: rgba(
+    46,
+    46,
+    46,
+    0.8
+  ) !important; /* Latar belakang gelap transparan */
+  color: #fff !important; /* Warna teks putih, penting untuk pastikan teks tetap putih */
+  border: 1px solid rgba(68, 68, 68, 0.8); /* Border gelap transparan */
+  border-radius: 0.25rem; /* Border-radius untuk membuat lebih rounded */
+  padding: 0.375rem 0.75rem; /* Padding untuk memberi ruang dalam select */
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  -webkit-appearance: none; /* Hapus default styling untuk browser Webkit */
+  -moz-appearance: none; /* Hapus default styling untuk browser Firefox */
+  appearance: none; /* Hapus default styling untuk semua browser */
+}
+
+/* Styling untuk option dengan transparansi */
+.form-select option {
+  background-color: rgba(
+    51,
+    51,
+    51,
+    0.9
+  ); /* Latar belakang option transparan */
+  color: #fff !important; /* Warna teks putih, memastikan teks di option tetap putih */
+  padding: 0.5rem; /* Padding untuk option */
+}
+
+/* Hover dan focus state untuk select */
+.form-select:hover,
+.form-select:focus {
+  background-color: rgba(
+    68,
+    68,
+    68,
+    0.8
+  ) !important; /* Latar belakang lebih terang saat hover/focus */
+  border-color: rgba(
+    102,
+    102,
+    102,
+    0.8
+  ); /* Border lebih terang saat hover/focus */
+  outline: none; /* Menghilangkan outline default */
+  color: #fff !important; /* Pastikan warna teks tetap putih saat hover/focus */
+}
+
+/* Mengubah warna saat item dipilih */
+.form-select option:checked {
+  background-color: rgba(
+    85,
+    85,
+    85,
+    0.9
+  ); /* Latar belakang lebih gelap saat dipilih */
+  color: #fff !important; /* Warna teks tetap putih */
+}
+
+/* Styling ketika select dalam keadaan disabled */
+.form-select:disabled {
+  background-color: rgba(
+    102,
+    102,
+    102,
+    0.8
+  ); /* Background lebih gelap saat disabled */
+  color: rgba(153, 153, 153, 0.8) !important; /* Warna teks lebih terang */
+  border-color: rgba(136, 136, 136, 0.8); /* Border lebih terang */
+}
+
+/* Pastikan background dan teks tetap sesuai */
+.form-select:focus {
+  background-color: rgba(
+    68,
+    68,
+    68,
+    0.9
+  ); /* Background lebih terang saat fokus */
+  color: #fff !important; /* Teks putih saat fokus */
+}
+
+/* Styling option dalam keadaan hover */
+.form-select option:hover {
+  background-color: rgba(
+    85,
+    85,
+    85,
+    0.9
+  ); /* Latar belakang lebih gelap saat hover pada option */
+  color: #fff !important; /* Teks tetap putih */
+}
+
+.tech-icons {
+  z-index: 2;
+  position: relative;
+}
+
+button {
+  z-index: 3;
+  position: relative;
 }

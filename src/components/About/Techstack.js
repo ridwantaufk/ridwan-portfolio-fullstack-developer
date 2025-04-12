@@ -1,14 +1,12 @@
-import React from "react";
-import { Col, Row } from "react-bootstrap";
-import { DiReact, DiNodejs, DiPhp } from "react-icons/di";
+import React, { useState } from "react";
+import { Col, Row, Form } from "react-bootstrap";
+import { DiReact, DiNodejs, DiPhp, DiJava } from "react-icons/di";
 import {
   SiNextdotjs,
   SiVuedotjs,
   SiPostgresql,
   SiLaravel,
   SiDjango,
-  SiGithub,
-  SiBitbucket,
   SiSocketdotio,
   SiWebrtc,
   SiBootstrap,
@@ -16,106 +14,322 @@ import {
   SiJquery,
   SiHtml5,
   SiCss3,
+  SiGraphql,
+  SiTailwindcss,
+  SiFlask,
+  SiSpringboot,
+  SiAngular,
+  SiExpress,
+  SiCplusplus,
+  SiCsharp,
+  SiFlutter,
+  SiReact,
+  SiElectron,
+  SiJavascript,
+  SiTypescript,
+  SiDart,
+  SiPython,
 } from "react-icons/si";
-import { FaPython, FaDocker, FaGit, FaAws } from "react-icons/fa";
+import { FaPython } from "react-icons/fa";
 import { GrMysql } from "react-icons/gr";
-import ReactTooltip from "react-tooltip"; // Import react-tooltip
+import ReactTooltip from "react-tooltip";
 
 function Techstack() {
+  // State filter
+  const [selectedSkill, setSelectedSkill] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  // Data teknologi
+  const techData = [
+    {
+      icon: <SiNextdotjs style={{ color: "#ffffff" }} />,
+      label: "Next.js",
+      skillLevel: "advanced",
+      category: "Framework (Frontend)",
+    },
+    {
+      icon: <DiReact style={{ color: "#61DAFB" }} />,
+      label: "React.js",
+      skillLevel: "advanced",
+      category: "Framework (Frontend)",
+    },
+    {
+      icon: <SiGraphql style={{ color: "#E10098" }} />,
+      label: "GraphQL",
+      skillLevel: "advanced",
+      category: "Query Language/API",
+    },
+    {
+      icon: <SiPostgresql style={{ color: "#336791" }} />,
+      label: "PostgreSQL",
+      skillLevel: "advanced",
+      category: "Database",
+    },
+    {
+      icon: <GrMysql style={{ color: "#4479A1" }} />,
+      label: "MySQL",
+      skillLevel: "advanced",
+      category: "Database",
+    },
+    {
+      icon: <DiNodejs style={{ color: "#8CC84B" }} />,
+      label: "Node.js",
+      skillLevel: "advanced",
+      category: "Runtime/Environment",
+    },
+    {
+      icon: <SiExpress style={{ color: "#ffffff" }} />,
+      label: "Express.js",
+      skillLevel: "advanced",
+      category: "Framework (Backend)",
+    },
+    {
+      icon: <SiTailwindcss style={{ color: "#38B2AC" }} />,
+      label: "Tailwind",
+      skillLevel: "advanced",
+      category: "UI Framework",
+    },
+    {
+      icon: <SiBootstrap style={{ color: "#563D7C" }} />,
+      label: "Bootstrap",
+      skillLevel: "medium",
+      category: "UI Framework",
+    },
+    {
+      icon: <SiVuedotjs style={{ color: "#4FC08D" }} />,
+      label: "Vue.js",
+      skillLevel: "medium",
+      category: "Framework (Frontend)",
+    },
+    {
+      icon: <SiHtml5 style={{ color: "#E34F26" }} />,
+      label: "HTML5",
+      skillLevel: "expert",
+      category: "Web Standard",
+    },
+    {
+      icon: <SiCss3 style={{ color: "#1572B6" }} />,
+      label: "CSS3",
+      skillLevel: "expert",
+      category: "Web Standard",
+    },
+    {
+      icon: <SiLaravel style={{ color: "#FF2D20" }} />,
+      label: "Laravel",
+      skillLevel: "advanced",
+      category: "Framework (Backend)",
+    },
+    {
+      icon: <SiSpringboot style={{ color: "#6DB33F" }} />,
+      label: "Springboot",
+      skillLevel: "medium",
+      category: "Framework (Backend)",
+    },
+    {
+      icon: <SiAngular style={{ color: "#DD0031" }} />,
+      label: "Angular",
+      skillLevel: "medium",
+      category: "Framework (Frontend)",
+    },
+    {
+      icon: <SiFlask style={{ color: "#ffffff" }} />,
+      label: "Flask",
+      skillLevel: "beginner",
+      category: "Framework (Backend)",
+    },
+    {
+      icon: <SiDjango style={{ color: "#092E20" }} />,
+      label: "Django",
+      skillLevel: "medium",
+      category: "Framework (Backend)",
+    },
+    {
+      icon: <DiPhp style={{ color: "#787CB5" }} />,
+      label: "PHP",
+      skillLevel: "advanced",
+      category: "Bahasa Pemrograman",
+    },
+    {
+      icon: <SiPython style={{ color: "#306998" }} />,
+      label: "Python",
+      skillLevel: "medium",
+      category: "Bahasa Pemrograman",
+    },
+    {
+      icon: <SiChakraui style={{ color: "#319795" }} />,
+      label: "ChakraUI",
+      skillLevel: "medium",
+      category: "UI Framework",
+    },
+    {
+      icon: <SiJquery style={{ color: "#0769AD" }} />,
+      label: "Jquery",
+      skillLevel: "advanced",
+      category: "Library (Utility)",
+    },
+    {
+      icon: <DiJava style={{ color: "#007396" }} />,
+      label: "Java",
+      skillLevel: "medium",
+      category: "Bahasa Pemrograman",
+    },
+    {
+      icon: <SiCplusplus style={{ color: "#00599C" }} />,
+      label: "C++",
+      skillLevel: "beginner",
+      category: "Bahasa Pemrograman",
+    },
+    {
+      icon: <SiCsharp style={{ color: "#C8C8C8" }} />,
+      label: "C#",
+      skillLevel: "beginner",
+      category: "Bahasa Pemrograman",
+    },
+    {
+      icon: <SiFlutter style={{ color: "#02569B" }} />,
+      label: "Flutter",
+      skillLevel: "beginner",
+      category: "Framework (Frontend)",
+    },
+    {
+      icon: <SiReact style={{ color: "#61DAFB" }} />,
+      label: "React Native",
+      skillLevel: "beginner",
+      category: "Framework (Frontend)",
+    },
+    {
+      icon: <SiElectron style={{ color: "#47848F" }} />,
+      label: "Electron",
+      skillLevel: "medium",
+      category: "Framework (Desktop)",
+    },
+    {
+      icon: <SiJavascript style={{ color: "#F7DF1E" }} />,
+      label: "JavaScript",
+      skillLevel: "expert",
+      category: "Bahasa Pemrograman",
+    },
+    {
+      icon: <SiTypescript style={{ color: "#3178C6" }} />,
+      label: "TypeScript",
+      skillLevel: "advanced",
+      category: "Bahasa Pemrograman",
+    },
+    {
+      icon: <SiDart style={{ color: "#00B4B6" }} />,
+      label: "Dart",
+      skillLevel: "beginner",
+      category: "Bahasa Pemrograman",
+    },
+    {
+      icon: <SiSocketdotio style={{ color: "#ffffff" }} />,
+      label: "Socket.io",
+      skillLevel: "medium",
+      category: "Library (Real-Time)",
+    },
+    {
+      icon: <SiWebrtc style={{ color: "#33B5E5" }} />,
+      label: "WebRTC",
+      skillLevel: "medium",
+      category: "API (Real-Time)",
+    },
+  ];
+
+  // List unique options
+  const skillLevels = ["All", "beginner", "medium", "advanced", "expert"];
+
+  const categories = [
+    "All",
+    ...Array.from(new Set(techData.map((t) => t.category))).sort((a, b) =>
+      a.localeCompare(b)
+    ),
+  ];
+
+  // Filter logic
+  const filteredData = techData.filter((tech) => {
+    return (
+      (selectedSkill === "All" || tech.skillLevel === selectedSkill) &&
+      (selectedCategory === "All" || tech.category === selectedCategory)
+    );
+  });
+
+  React.useEffect(() => {
+    window.addEventListener("resize", () => {
+      ReactTooltip.hide();
+      ReactTooltip.show();
+    });
+  }, []);
+
   return (
     <>
-      {/* Tooltip Component */}
-      <ReactTooltip effect="solid" delayShow={100} /> {/* Delay 100ms */}
+      <ReactTooltip effect="solid" delayShow={100} globalEventOff="click" />
+      <div className="mb-4 d-flex justify-content-center gap-3 flex-wrap">
+        <Form.Group>
+          <Form.Label className="fw-semibold">Skill Level</Form.Label>
+          <Form.Select
+            value={selectedSkill}
+            onChange={(e) => setSelectedSkill(e.target.value)}
+            className="modern-select"
+          >
+            {skillLevels.map((level) => (
+              <option key={level} value={level}>
+                {level === "All"
+                  ? "Semua Level"
+                  : level.charAt(0).toUpperCase() + level.slice(1)}
+              </option>
+            ))}
+          </Form.Select>
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Label className="fw-semibold">Kategori</Form.Label>
+          <Form.Select
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+            className="modern-select"
+          >
+            {categories.map((cat) => (
+              <option key={cat} value={cat}>
+                {cat === "All"
+                  ? "Semua Kategori"
+                  : cat.replace(/([A-Z])/g, "$1")}
+              </option>
+            ))}
+          </Form.Select>
+        </Form.Group>
+      </div>
+
       <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
-        {/* React.js */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="React.js">
-          <DiReact />
-        </Col>
-        {/* Node.js */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="Node.js">
-          <DiNodejs />
-        </Col>
-        {/* Next.js */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="Next.js">
-          <SiNextdotjs />
-        </Col>
-        {/* Vue.js */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="Vue.js">
-          <SiVuedotjs />
-        </Col>
-        {/* PostgreSQL */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="PostgreSQL">
-          <SiPostgresql />
-        </Col>
-        {/* PHP */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="PHP">
-          <DiPhp />
-        </Col>
-        {/* Laravel */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="Laravel">
-          <SiLaravel />
-        </Col>
-        {/* Django */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="Django">
-          <SiDjango />
-        </Col>
-        {/* ChakraUI */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="ChakraUI">
-          <SiChakraui />
-        </Col>
-        {/* Bootstrap */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="Bootstrap">
-          <SiBootstrap />
-        </Col>
-        {/* HTML5 */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="HTML5">
-          <SiHtml5 />
-        </Col>
-        {/* CSS3 */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="CSS3">
-          <SiCss3 />
-        </Col>
-        {/* Jquery */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="Jquery">
-          <SiJquery />
-        </Col>
-        {/* Python */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="Python">
-          <FaPython />
-        </Col>
-        {/* Machine Learning */}
-        <Col
-          xs={4}
-          md={2}
-          className="tech-icons"
-          data-tip="Machine Learning (AWS)"
-        >
-          <FaAws />
-        </Col>
-        {/* Git */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="Git">
-          <FaGit />
-        </Col>
-        {/* GitHub */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="GitHub">
-          <SiGithub />
-        </Col>
-        {/* Bitbucket */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="Bitbucket">
-          <SiBitbucket />
-        </Col>
-        {/* Socket.IO */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="Socket.IO">
-          <SiSocketdotio />
-        </Col>
-        {/* WebRTC */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="WebRTC">
-          <SiWebrtc />
-        </Col>
-        {/* MySQL */}
-        <Col xs={4} md={2} className="tech-icons" data-tip="MySQL">
-          <GrMysql />
-        </Col>
+        {filteredData.map((tech, index) => (
+          <Col
+            key={tech.label}
+            xs={4}
+            md={2}
+            className="tech-icons"
+            data-tip={tech.label}
+          >
+            {tech.icon}
+            <div className={`skill-scale ${tech.skillLevel}`}>
+              <div className="line-with-dots">
+                <span className="dot-wrapper" data-tip="Pemula">
+                  <span className="dot" />
+                </span>
+                <span className="line" />
+                <span className="dot-wrapper" data-tip="Medium">
+                  <span className="dot" />
+                </span>
+                <span className="line" />
+                <span className="dot-wrapper" data-tip="Berpengalaman">
+                  <span className="dot" />
+                </span>
+                <span className="line" />
+                <span className="dot-wrapper" data-tip="Sangat Mahir">
+                  <span className="dot" />
+                </span>
+              </div>
+            </div>
+          </Col>
+        ))}
       </Row>
     </>
   );
