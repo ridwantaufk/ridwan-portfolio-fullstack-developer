@@ -6,19 +6,23 @@ export const uploadImageToGitHub = async (base64Image, imageName) => {
   const owner = process.env.REACT_APP_GITHUB_OWNER;
   const repo = process.env.REACT_APP_GITHUB_REPO;
   const accessToken = process.env.REACT_APP_GITHUB_TOKEN;
+  console.log("Using token:", accessToken);
 
   const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/src/Assets/Projects/${imageName}.png?ref=${branch}`;
 
+  // Pastikan image hanya berisi bagian base64 setelah 'base64,'
+  const base64Content = base64Image.split("base64,")[1];
+
   const data = {
     message: `Upload image: ${imageName}.png`,
-    content: base64Image.split("base64,")[1],
+    content: base64Content, // hanya bagian base64 saja
     branch,
   };
 
   const response = await fetch(apiUrl, {
     method: "PUT",
     headers: {
-      Authorization: `Bearer ${accessToken}`,
+      Authorization: `token ${accessToken}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
@@ -43,7 +47,7 @@ export const getFileSha = async () => {
 
   const response = await fetch(apiUrl, {
     headers: {
-      Authorization: `Bearer ${accessToken}`,
+      Authorization: `token ${accessToken}`,
     },
   });
 
@@ -71,7 +75,7 @@ export const updateProjectDataFile = async (
   // Ambil konten lama dulu
   const response = await fetch(apiUrl, {
     headers: {
-      Authorization: `Bearer ${accessToken}`,
+      Authorization: `token ${accessToken}`,
     },
   });
 
@@ -116,7 +120,7 @@ export const updateProjectDataFile = async (
   const updateRes = await fetch(apiUrl, {
     method: "PUT",
     headers: {
-      Authorization: `Bearer ${accessToken}`,
+      Authorization: `token ${accessToken}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
@@ -131,14 +135,27 @@ export const updateProjectDataFile = async (
 };
 
 export const addProjectToGitHub = async (newProject) => {
-  const imageName = newProject.title.toLowerCase().replace(/[^a-z0-9]/gi, "-");
+  const imageName = newProject.title
+    .replace(/[^a-zA-Z0-9]/g, "") // Hapus semua simbol aneh
+    .replace(/\s+/g, "") // Hapus spasi
+    .replace(/^[^a-zA-Z]+/, "") // Pastikan gak diawali angka
+    .toLowerCase();
 
-  //   const imageUrl = await uploadImageToGitHub(newProject.imgPath, imageName);
+  try {
+    const imageUrl = await uploadImageToGitHub(newProject.imgPath, imageName);
+    console.log("Gambar berhasil diupload:", imageUrl);
+  } catch (error) {
+    console.error("Error upload gambar:", error);
+  }
+
+  // Ambil SHA file untuk update
   const fileSha = await getFileSha();
+
+  // Update ProjectData.js dengan project baru
   await updateProjectDataFile(newProject, imageName, fileSha);
 
   console.log(
-    "✅ Project berhasil ditambahkan & commit dikirim ke branch:",
+    "✅ Project berhasil ditambahkan & commit dikirim ke branch : ",
     branch
   );
 };
