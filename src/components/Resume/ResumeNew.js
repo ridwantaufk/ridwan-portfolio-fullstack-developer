@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { Container, Row, Button } from "react-bootstrap";
 import { AiOutlineDownload } from "react-icons/ai";
 import { GlobalWorkerOptions, getDocument } from "pdfjs-dist";
-import "pdfjs-dist/web/pdf_viewer.css"; // Pastikan path ini benar
+import "pdfjs-dist/web/pdf_viewer.css";
 
 // Tentukan sumber worker PDF
 GlobalWorkerOptions.workerSrc =
@@ -48,12 +48,11 @@ function ResumeNew() {
   return (
     <div>
       <Container fluid className="resume-section">
-        {/* Tombol Download */}
         <Row
           style={{
             justifyContent: "center",
             position: "relative",
-            marginBottom: "30px", // Tambahkan spasi antara tombol dan preview
+            marginBottom: "30px",
           }}
         >
           <Button
@@ -79,9 +78,9 @@ function ResumeNew() {
             className="pdf-container"
             style={{
               maxWidth: "100%",
-              width: "90%", // Atau sesuaikan dengan previewWidth jika diperlukan
-              overflow: "auto", // Pastikan kontainer dapat di-scroll
-              margin: "0 auto", // Pusatkan elemen
+              width: "90%",
+              overflow: "auto",
+              margin: "0 auto",
             }}
           />
         </Row>

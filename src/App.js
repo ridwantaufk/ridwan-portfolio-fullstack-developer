@@ -15,6 +15,7 @@ import {
 import ScrollToTop from "./components/ScrollToTop";
 import "./style.css";
 import "./App.css";
+import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {

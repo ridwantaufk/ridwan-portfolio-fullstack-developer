@@ -247,3 +247,49 @@ button {
   z-index: 3;
   position: relative;
 }
+
+.modal-dark-theme .modal-content {
+  background-color: #2c1e4b; /* Ungu gelap */
+  color: white; /* Teks berwarna putih */
+}
+
+.modal-dark-theme .modal-header,
+.modal-dark-theme .modal-footer {
+  background-color: #1f1532; /* Gelap lebih untuk header dan footer */
+  color: white;
+}
+
+.modal-dark-theme .form-control {
+  background-color: #3c2a5b; /* Latar belakang input dengan warna ungu gelap */
+  color: white; /* Teks input putih */
+  border: 1px solid #5e3c8d; /* Border ungu */
+}
+
+/* Fokus pada input */
+.modal-dark-theme .form-control:focus {
+  background-color: #5e3c8d; /* Background lebih gelap saat fokus */
+  color: white; /* Teks tetap putih */
+  border-color: #4a2976; /* Border lebih gelap untuk efek fokus */
+}
+
+/* Fokus pada textarea */
+.modal-dark-theme .form-control[rows="3"]:focus {
+  background-color: #5e3c8d; /* Background lebih gelap saat fokus */
+  color: white; /* Teks tetap putih */
+  border-color: #4a2976; /* Border lebih gelap untuk efek fokus */
+}
+
+.modal-dark-theme .btn-primary {
+  background-color: #5e3c8d; /* Tombol primary berwarna ungu */
+  border: none;
+}
+
+.modal-dark-theme .btn-secondary {
+  background-color: #3c2a5b; /* Tombol secondary dengan warna ungu gelap */
+  border: none;
+}
+
+/* CSS Kustom untuk placeholder dengan warna terang */
+.custom-placeholder::placeholder {
+  color: #b0b0b0 !important; /* Warna lebih terang */
+}

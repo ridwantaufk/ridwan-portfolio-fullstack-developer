@@ -1,0 +1,32 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - gh-pages-develop # Ganti dengan nama branch kamu untuk pengembangan
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "23" # Sesuaikan dengan versi Node.js yang kamu pakai
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the project
+        run: npm run build # Pastikan ada script build yang menghasilkan dist atau build folder
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.REACT_APP_GITHUB_TOKEN }}
+          publish_dir: ./build # Ganti dengan folder build kamu
+          publish_branch: gh-pages # Target branch yang digunakan untuk GitHub Pages
