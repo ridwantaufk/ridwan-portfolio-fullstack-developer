@@ -74,11 +74,13 @@ const AddProjectModal = ({ show, onClose, onAdd }) => {
 
   const handleAdd = async () => {
     let errors = {};
+
+    // Validasi input
     if (!newProject.title) {
       errors.title = "Title is required!";
     }
-    if (!newProject.imgPath) {
-      errors.imgPath = "Image path is required!";
+    if (!newProject.imgPath || newProject.imgPath === "") {
+      errors.imgPath = "Please upload and crop an image!";
     }
 
     if (Object.keys(errors).length > 0) {
@@ -248,9 +250,20 @@ const AddProjectModal = ({ show, onClose, onAdd }) => {
                       objectFit: "cover",
                     }}
                   />
+                  {formErrors.imgPath && (
+                    <div
+                      style={{
+                        color: "red",
+                        marginTop: "5px",
+                        fontSize: "0.9rem",
+                      }}
+                    >
+                      {formErrors.imgPath}
+                    </div>
+                  )}
                 </div>
               ) : (
-                <div>Loading image...</div>
+                <div></div>
               )}
               <Form.Control.Feedback type="invalid">
                 {formErrors.imgPath}
