@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Build the project
-        run: npm run build # Pastikan ada script build yang menghasilkan dist atau build folder
+        run: CI='' npm run build # Pastikan ada script build yang menghasilkan dist atau build folder
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
