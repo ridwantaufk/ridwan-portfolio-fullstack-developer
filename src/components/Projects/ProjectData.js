@@ -5,6 +5,7 @@ import brownies from "../../Assets/Projects/brownies.png";
 import hospitalinformationsystem from "../../Assets/Projects/hospitalinformationsystem.png";
 import sparepart from "../../Assets/Projects/sparepart.png";
 import ui-design from "../../Assets/Projects/ui-design.png";
+import uidesign from "../../Assets/Projects/uidesign.png";
 
 export const projectData = [
   {
@@ -57,6 +58,13 @@ export const projectData = [
   },,
   {
     imgPath: ui-design,
+    title: "UI Design",
+    description: "This project features a sleek and modern UI design that embraces a futuristic aesthetic and neumorphism principles. By utilizing soft shadows and subtle highlights, the interface creates a tactile, three-dimensional feel. The design incorporates a minimalistic style with rounded shapes and a harmonious color palette, ensuring an engaging user experience. Interactive elements and smooth transitions further enhance usability, resulting in a unique and immersive interface.",
+    ghLink: "https://github.com/ridwantaufk/transaksi-crypto-currency",
+    demoLink: "https://ridwantaufk.github.io/transaksi-crypto-currency",
+  },,
+  {
+    imgPath: uidesign,
     title: "UI Design",
     description: "This project features a sleek and modern UI design that embraces a futuristic aesthetic and neumorphism principles. By utilizing soft shadows and subtle highlights, the interface creates a tactile, three-dimensional feel. The design incorporates a minimalistic style with rounded shapes and a harmonious color palette, ensuring an engaging user experience. Interactive elements and smooth transitions further enhance usability, resulting in a unique and immersive interface.",
     ghLink: "https://github.com/ridwantaufk/transaksi-crypto-currency",
