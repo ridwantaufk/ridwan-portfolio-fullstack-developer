@@ -133,7 +133,7 @@ export const updateProjectDataFile = async (
 export const addProjectToGitHub = async (newProject) => {
   const imageName = newProject.title.toLowerCase().replace(/[^a-z0-9]/gi, "-");
 
-  const imageUrl = await uploadImageToGitHub(newProject.imgPath, imageName);
+  //   const imageUrl = await uploadImageToGitHub(newProject.imgPath, imageName);
   const fileSha = await getFileSha();
   await updateProjectDataFile(newProject, imageName, fileSha);
 
