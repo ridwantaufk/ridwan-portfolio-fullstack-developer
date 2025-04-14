@@ -37,7 +37,7 @@ jobs:
 
       - name: Obfuscate JavaScript (Advanced)
         run: |
-          npx javascript-obfuscator build/static/js --output build/static/js --control-flow-flattening --dead-code-injection --string-array-encoding --string-array-rotation --compact --numbers-to-expressions --identifier-names-renaming
+          npx javascript-obfuscator build/static/js --output build/static/js --config obfuscator-config.json
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
