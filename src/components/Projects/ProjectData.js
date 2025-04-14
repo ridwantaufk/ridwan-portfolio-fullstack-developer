@@ -7,10 +7,9 @@ import sparepart from "../../Assets/Projects/sparepart.png";
 import uidesign from "../../Assets/Projects/uidesign.png";
 import datapasienrs from "../../Assets/Projects/datapasienrs.png";
 import englishlearningplatformwithaiintegration from "../../Assets/Projects/englishlearningplatformwithaiintegration.png";
-import todolist from "../../Assets/Projects/todolist.png";
 
 export const projectData = [
-{
+  {
     imgPath: brownies,
     title: "Brownies Ordering System",
     description:
@@ -69,7 +68,8 @@ export const projectData = [
   {
     imgPath: datapasienrs,
     title: "Data Pasien RS",
-    description: "This project showcases a sleek, futuristic UI design using neumorphism. It features soft shadows, rounded shapes, and a minimalistic style, creating a tactile and engaging user experience. The design includes a harmonious color palette and interactive elements for enhanced usability.",
+    description:
+      "This project showcases a sleek, futuristic UI design using neumorphism. It features soft shadows, rounded shapes, and a minimalistic style, creating a tactile and engaging user experience. The design includes a harmonious color palette and interactive elements for enhanced usability.",
     ghLink: "https://github.com/ridwantaufk/laravel_ridwantaufk",
     demoLink: "https://ridwantaufk.github.io/laravel_ridwantaufk",
   },
@@ -84,17 +84,7 @@ AI tools enhance the experience with Text-to-Speech (TTS) for pronunciation prac
 
 The platform also features discussion forums for community engagement and secure user management for safe access. With a robust GraphQL API, it efficiently handles data, making it a powerful tool for mastering English.`,
     ghLink: "https://github.com/ridwantaufk/english-ai-chat-vcall-presentation",
-    demoLink: "https://ridwantaufk.github.io/english-ai-chat-vcall-presentation",
-  },
-  {
-    imgPath: todolist,
-    title: `To-Do List`,
-    description: `The ToDo List application is an efficient task management tool designed to enhance productivity and collaboration. Developed with Next.js and TypeScript, it features a responsive interface and utilizes Docker for easy deployment and scalability.
-
-Users can effortlessly create, edit, and delete tasks, organizing them into categories for effective prioritization. Each task includes details like deadlines and status updates, with notifications to keep users on track. The app also offers logging and reporting features for productivity analysis.
-
-Real-time chat functionality fosters teamwork, while secure user authentication—featuring password hashing and data encryption—ensures data safety. Overall, the ToDo List application combines essential task management capabilities with robust security, making it ideal for individuals and teams.`,
-    ghLink: "https://github.com/ridwantaufk/todolist-with-chat",
-    demoLink: "https://ridwantaufk.github.io/todolist-with-chat",
+    demoLink:
+      "https://ridwantaufk.github.io/english-ai-chat-vcall-presentation",
   },
 ];

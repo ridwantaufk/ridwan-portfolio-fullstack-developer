@@ -4,7 +4,7 @@ import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
 import { projectData as initialProjectData } from "./ProjectData";
 import AddProjectModal from "./AddProjectModal";
-import DeployStatus from "./DeployStatus";
+// import DeployStatus from "./DeployStatus";
 
 function Projects() {
   const [showModal, setShowModal] = useState(false);
@@ -32,7 +32,7 @@ function Projects() {
         <Button variant="primary" onClick={handleShow}>
           Add New Project
         </Button>
-        {deployStatus && <DeployStatus />}
+        {/* {deployStatus && <DeployStatus />} */}
         {/* <DeployStatus /> */}
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
           {projectData.map((project, idx) => (
