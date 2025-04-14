@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - gh-pages-develop # Saat kamu push ke branch develop
+      - gh-pages-develop
 
 jobs:
   deploy:
@@ -11,24 +11,24 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
-          ref: gh-pages-develop # Checkout source dari develop branch
+          fetch-depth: 0 # Penting buat peaceiris/actions-gh-pages
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: "23" # atau sesuai versi Node yang kamu pakai
+          node-version: "18" # atau versi yang cocok dengan project kamu
 
       - name: Install dependencies
         run: npm install
 
       - name: Build the project
-        run: CI='' npm run build
+        run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build # Sesuaikan dengan output build kamu
-          publish_branch: gh-pages # Ini tujuan deploy GitHub Pages
+          github_token: ${{ secrets.GH_TOKEN }} # Ganti dari GITHUB_TOKEN ke token custom kamu
+          publish_dir: ./build
+          publish_branch: gh-pages
