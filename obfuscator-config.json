@@ -6,5 +6,6 @@
   "stringArrayEncoding": ["base64"],
   "stringArrayRotate": true,
   "numbersToExpressions": true,
-  "identifierNamesGenerator": "hexadecimal"
+  "identifierNamesGenerator": "hexadecimal",
+  "exclude": ["src/components/utils/Man3D.js"]
 }
