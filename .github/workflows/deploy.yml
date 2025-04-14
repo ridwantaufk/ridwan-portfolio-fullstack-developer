@@ -3,11 +3,11 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - gh-pages-develop
+      - gh-pages-develop # deploy setiap kali ada push ke branch ini
 
 permissions:
-  contents: write # Izin untuk melakukan push ke repository
-  pages: write # Izin untuk mengupdate GitHub Pages
+  contents: write
+  pages: write
 
 jobs:
   deploy:
@@ -17,24 +17,24 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # Penting buat peaceiris/actions-gh-pages
+          fetch-depth: 0 # penting biar peaceiris bisa nge-push
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18" # Atur ke versi Node kamu
+          node-version: "23"
 
       - name: Install dependencies
         run: npm install
 
       - name: Build the project
         run: |
-          unset CI # Supaya warning ESLint gak dianggap error
+          unset CI
           npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }} # Gunakan token GITHUB_TOKEN bawaan
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
           publish_branch: gh-pages
