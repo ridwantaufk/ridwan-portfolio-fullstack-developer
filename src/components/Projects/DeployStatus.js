@@ -12,7 +12,7 @@ const OWNER = "ridwantaufk";
 const DEPLOY_WORKFLOW_NAME = "pages-build-deployment";
 
 const DeployStatus = () => {
-  const [status, setStatus] = useState("idle"); // Default to "idle"
+  const [status, setStatus] = useState("idle");
   const [message, setMessage] = useState("");
 
   const tokenParts = [
@@ -51,9 +51,8 @@ const DeployStatus = () => {
         return;
       }
 
-      // Function to check the status of a specific branch deployment
-      const checkDeploymentStatus = async (branch) => {
-        const runsRes = await fetch(
+      const checkLatestRun = async (branch) => {
+        const runRes = await fetch(
           `https://api.github.com/repos/${OWNER}/${REPO}/actions/workflows/${deployWorkflow.id}/runs?branch=${branch}`,
           {
             headers: {
@@ -61,107 +60,68 @@ const DeployStatus = () => {
             },
           }
         );
-
-        const runs = await runsRes.json();
-        const latestRun = runs.workflow_runs.find(
-          (run) => run.head_branch === branch
-        );
-
-        if (!latestRun) {
-          return {
-            status: "error",
-            message: `Tidak ada deploy run terbaru di ${branch}.`,
-          };
-        }
-
-        return { status: "checking", runId: latestRun.id };
+        const runData = await runRes.json();
+        return runData.workflow_runs?.[0];
       };
 
-      // Start by checking gh-pages-develop
-      const {
-        status: developStatus,
-        message: developMessage,
-        runId: developRunId,
-      } = await checkDeploymentStatus("gh-pages-develop");
-
-      if (developStatus === "error") {
-        setStatus("error");
-        setMessage(developMessage);
-        return;
-      }
-
-      setStatus("checking");
-      setMessage(`Mengecek status deploy di gh-pages-develop...`);
-
-      // Check the status of the build and deploy process
-      const interval = setInterval(async () => {
-        const runCheck = await fetch(
-          `https://api.github.com/repos/${OWNER}/${REPO}/actions/runs/${developRunId}`,
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          }
-        );
-        const runData = await runCheck.json();
-
-        if (runData.status === "completed") {
-          if (runData.conclusion === "success") {
-            setStatus("checking");
-            setMessage(
-              "Proses selesai di gh-pages-develop, melanjutkan ke gh-pages..."
-            );
-
-            // Now, check the status for gh-pages
-            const {
-              status: ghPagesStatus,
-              message: ghPagesMessage,
-              runId: ghPagesRunId,
-            } = await checkDeploymentStatus("gh-pages");
-
-            if (ghPagesStatus === "error") {
-              setStatus("error");
-              setMessage(ghPagesMessage);
-              clearInterval(interval);
-              return;
-            }
-
-            setStatus("checking");
-            setMessage("Mengecek status deploy di gh-pages...");
-
-            // Check the deployment status of gh-pages
-            const runCheckGhPages = await fetch(
-              `https://api.github.com/repos/${OWNER}/${REPO}/actions/runs/${ghPagesRunId}`,
+      const waitForCompletion = async (runId, branch) => {
+        return new Promise((resolve, reject) => {
+          const interval = setInterval(async () => {
+            const checkRes = await fetch(
+              `https://api.github.com/repos/${OWNER}/${REPO}/actions/runs/${runId}`,
               {
                 headers: {
-                  Authorization: `Bearer ${accessToken}`,
+                  Authorization: `token ${accessToken}`,
                 },
               }
             );
-            const ghPagesRunData = await runCheckGhPages.json();
+            const checkData = await checkRes.json();
 
-            if (ghPagesRunData.status === "completed") {
+            if (checkData.status === "completed") {
               clearInterval(interval);
-              if (ghPagesRunData.conclusion === "success") {
-                setStatus("done");
-                setMessage("Proyek berhasil dideploy ke gh-pages!");
-                setTimeout(() => window.location.reload(), 2000); // ⏳ delay 2 detik lalu reload
+              if (checkData.conclusion === "success") {
+                resolve(true);
               } else {
-                setStatus("error");
-                setMessage("Deploy ke gh-pages gagal.");
+                reject(new Error(`Deploy di ${branch} gagal.`));
               }
             }
-          } else {
-            setStatus("error");
-            setMessage("Deploy ke gh-pages-develop gagal.");
-            clearInterval(interval);
-          }
-        }
-      }, 5000); // Check every 5 seconds
+          }, 5000);
+        });
+      };
+
+      // Step 1: Tunggu build di gh-pages-develop
+      setMessage("Menunggu build di gh-pages-develop...");
+      const developRun = await checkLatestRun("gh-pages-develop");
+
+      if (!developRun) {
+        setStatus("error");
+        setMessage("Tidak ditemukan run di gh-pages-develop.");
+        return;
+      }
+
+      await waitForCompletion(developRun.id, "gh-pages-develop");
+
+      // Step 2: Tunggu deploy di gh-pages
+      setMessage("Menunggu deploy ke gh-pages...");
+      const deployRun = await checkLatestRun("gh-pages");
+
+      if (!deployRun) {
+        setStatus("error");
+        setMessage("Tidak ditemukan run di gh-pages.");
+        return;
+      }
+
+      await waitForCompletion(deployRun.id, "gh-pages");
+
+      setStatus("done");
+      setMessage("Proyek berhasil dideploy ke GitHub Pages!");
+      setTimeout(() => window.location.reload(), 2000); // refresh biar data terbaru muncul
     } catch (err) {
       console.error(err);
       setStatus("error");
-      setMessage("Terjadi kesalahan saat mengecek status deploy.");
+      setMessage(
+        err.message || "Terjadi kesalahan saat mengecek status deploy."
+      );
     }
   };
 
