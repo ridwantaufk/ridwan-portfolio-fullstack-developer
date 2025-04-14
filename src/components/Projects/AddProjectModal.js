@@ -4,7 +4,7 @@ import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
 import { addProjectToGitHub } from "../../services/githubServices";
 
-const AddProjectModal = ({ show, onClose, onAdd }) => {
+const AddProjectModal = ({ show, onClose, onAdd, setStatus }) => {
   const [isAuth, setIsAuth] = useState(false);
   const [credentials, setCredentials] = useState({
     username: "",
@@ -89,15 +89,18 @@ const AddProjectModal = ({ show, onClose, onAdd }) => {
     }
 
     try {
-      // Mengirim data ke service
+      // Kirim project ke GitHub
       await addProjectToGitHub(newProject);
       //   onAdd(newProject);
+
+      // Set deploy status to checking
+      setStatus(true);
+
       resetForm();
       setIsAuth(false);
       onClose();
     } catch (error) {
       console.error("Error adding project:", error);
-      // Handle error sesuai kebutuhan
     }
   };
 

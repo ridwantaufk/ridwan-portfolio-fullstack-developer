@@ -4,10 +4,12 @@ import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
 import { projectData as initialProjectData } from "./ProjectData";
 import AddProjectModal from "./AddProjectModal";
+import DeployStatus from "./DeployStatus";
 
 function Projects() {
   const [showModal, setShowModal] = useState(false);
   const [projectData, setProjectData] = useState(initialProjectData);
+  const [deployStatus, setDeployStatus] = useState(false);
 
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
@@ -30,6 +32,8 @@ function Projects() {
         <Button variant="primary" onClick={handleShow}>
           Add New Project
         </Button>
+        {deployStatus && <DeployStatus />}
+        {/* <DeployStatus /> */}
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
           {projectData.map((project, idx) => (
             <Col md={4} className="project-card" key={idx}>
@@ -51,6 +55,7 @@ function Projects() {
         show={showModal}
         onClose={handleClose}
         onAdd={handleAddProject}
+        setStatus={setDeployStatus}
       />
     </Container>
   );
