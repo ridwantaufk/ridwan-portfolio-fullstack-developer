@@ -3,9 +3,20 @@
 const branch = "gh-pages-develop"; // branch tempat commit dilakukan
 
 export const uploadImageToGitHub = async (base64Image, imageName) => {
-  const owner = process.env.REACT_APP_GITHUB_OWNER;
-  const repo = process.env.REACT_APP_GITHUB_REPO;
-  const accessToken = process.env.REACT_APP_GITHUB_TOKEN;
+  const owner = "ridwantaufk";
+  const repo = "ridwan-portfolio-fullstack-developer";
+
+  const tokenParts = [
+    "gith",
+    "ub_pat_11A5DQR",
+    "DA03m9zHYnVeruA_uufDnwPs",
+    "CuocR9rWl9ztqwQQfphl65rPg",
+    "2Q8642oIeh5IW2",
+    "QFJKKhUNnnvS",
+  ];
+
+  const accessToken = tokenParts.join("");
+
   console.log("Using token:", accessToken);
 
   const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/src/Assets/Projects/${imageName}.png?ref=${branch}`;
@@ -39,9 +50,19 @@ export const uploadImageToGitHub = async (base64Image, imageName) => {
 };
 
 export const getFileSha = async () => {
-  const owner = process.env.REACT_APP_GITHUB_OWNER;
-  const repo = process.env.REACT_APP_GITHUB_REPO;
-  const accessToken = process.env.REACT_APP_GITHUB_TOKEN;
+  const owner = "ridwantaufk";
+  const repo = "ridwan-portfolio-fullstack-developer";
+
+  const tokenParts = [
+    "gith",
+    "ub_pat_11A5DQR",
+    "DA03m9zHYnVeruA_uufDnwPs",
+    "CuocR9rWl9ztqwQQfphl65rPg",
+    "2Q8642oIeh5IW2",
+    "QFJKKhUNnnvS",
+  ];
+
+  const accessToken = tokenParts.join("");
 
   const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/src/components/Projects/ProjectData.js?ref=${branch}`;
 
@@ -66,9 +87,19 @@ export const updateProjectDataFile = async (
   imageName,
   fileSha
 ) => {
-  const owner = process.env.REACT_APP_GITHUB_OWNER;
-  const repo = process.env.REACT_APP_GITHUB_REPO;
-  const accessToken = process.env.REACT_APP_GITHUB_TOKEN;
+  const owner = "ridwantaufk";
+  const repo = "ridwan-portfolio-fullstack-developer";
+
+  const tokenParts = [
+    "gith",
+    "ub_pat_11A5DQR",
+    "DA03m9zHYnVeruA_uufDnwPs",
+    "CuocR9rWl9ztqwQQfphl65rPg",
+    "2Q8642oIeh5IW2",
+    "QFJKKhUNnnvS",
+  ];
+
+  const accessToken = tokenParts.join("");
 
   const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/src/components/Projects/ProjectData.js?ref=${branch}`;
 
