@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ridwan-portfolio-fullstack-developer/static/css/main.8d2ee40d.css",
-    "main.js": "/ridwan-portfolio-fullstack-developer/static/js/main.423f4bd2.js",
+    "main.js": "/ridwan-portfolio-fullstack-developer/static/js/main.a53d12ed.js",
     "static/js/187.c45d9643.chunk.js": "/ridwan-portfolio-fullstack-developer/static/js/187.c45d9643.chunk.js",
     "static/js/206.020cae30.chunk.js": "/ridwan-portfolio-fullstack-developer/static/js/206.020cae30.chunk.js",
     "static/js/985.dcbdcbf2.chunk.js": "/ridwan-portfolio-fullstack-developer/static/js/985.dcbdcbf2.chunk.js",
@@ -13,6 +13,7 @@
     "static/media/englishlearningplatformwithaiintegration.png": "/ridwan-portfolio-fullstack-developer/static/media/englishlearningplatformwithaiintegration.67bdc30acb3ae9dfe96e.png",
     "static/media/traininginformationsystem.png": "/ridwan-portfolio-fullstack-developer/static/media/traininginformationsystem.06a291a28e0482b5a226.png",
     "static/media/datapasienrs.png": "/ridwan-portfolio-fullstack-developer/static/media/datapasienrs.829eb6f734ba3e41cb23.png",
+    "static/media/todolist.png": "/ridwan-portfolio-fullstack-developer/static/media/todolist.dc0e0e5442ada68e542b.png",
     "static/media/hospitalinformationsystem.png": "/ridwan-portfolio-fullstack-developer/static/media/hospitalinformationsystem.b8d5ee187e586b04b5f1.png",
     "static/media/pp_ridwan.jpg": "/ridwan-portfolio-fullstack-developer/static/media/pp_ridwan.84b6c013e9f44e13a7c4.jpg",
     "static/media/about.png": "/ridwan-portfolio-fullstack-developer/static/media/about.aee0f771fbfc1e7b8fa8.png",
@@ -22,6 +23,6 @@
   },
   "entrypoints": [
     "static/css/main.8d2ee40d.css",
-    "static/js/main.423f4bd2.js"
+    "static/js/main.a53d12ed.js"
   ]
 }
