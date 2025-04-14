@@ -5,8 +5,9 @@ import Home2 from "./Home2";
 import Type from "./Type";
 import Robot3D from "../utils/Robot3D";
 import Computer3D from "../utils/Computer3D";
-import dynamic from "next/dynamic";
-const Man3D = dynamic(() => import("../utils/Man3D"), { ssr: false });
+import React, { Suspense } from "react";
+
+const Man3D = React.lazy(() => import("../utils/Man3D"));
 
 function Home() {
   return (
@@ -54,7 +55,9 @@ function Home() {
             {/* 3D Animation */}
             <Col className="home-header" md={5} style={{ height: "600px" }}>
               {/* <Robot3D /> */}
-              <Man3D />
+              <Suspense fallback={<div>Loading...</div>}>
+                <Man3D />
+              </Suspense>
             </Col>
           </Row>
         </Container>
