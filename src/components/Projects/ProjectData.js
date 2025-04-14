@@ -8,6 +8,7 @@ import uidesign from "../../Assets/Projects/uidesign.png";
 import datapasienrs from "../../Assets/Projects/datapasienrs.png";
 import englishlearningplatformwithaiintegration from "../../Assets/Projects/englishlearningplatformwithaiintegration.png";
 import todolist from "../../Assets/Projects/todolist.png";
+import gameconnectacommunicationhubforgamers from "../../Assets/Projects/gameconnectacommunicationhubforgamers.png";
 
 export const projectData = [
 {
@@ -95,8 +96,15 @@ The platform also features discussion forums for community engagement and secure
 
 Users can effortlessly create, edit, and delete tasks, organizing them into categories for effective prioritization. Each task includes details like deadlines and status updates, with notifications to keep users on track. The app also offers logging and reporting features for productivity analysis.
 
-Real-time chat functionality fosters teamwork, while secure user authentication—featuring password hashing and data encryption—ensures data safety. Overall, the ToDo List application combines essential task management capabilities with robust security, making it ideal for individuals and teams.`,
+Real-time chat functionality fosters teamwork, while secure user authenticationâfeaturing password hashing and data encryptionâensures data safety. Overall, the ToDo List application combines essential task management capabilities with robust security, making it ideal for individuals and teams.`,
     ghLink: "https://github.com/ridwantaufk/english-ai-chat-vcall-presentation",
     demoLink: "https://ridwantaufk.github.io/english-ai-chat-vcall-presentation",
+  },
+  {
+    imgPath: gameconnectacommunicationhubforgamers,
+    title: `GameConnect: A Communication Hub for Gamers`,
+    description: `GameConnect is a streamlined communication platform tailored for gamers and online communities. It features voice and text chat, community channels, and integration with popular gaming platforms for real-time interaction. Utilizing technologies like WebRTC for real-time communication, Socket.IO for instant messaging, and GraphQL for flexible data querying, GameConnect ensures a responsive desktop experience built with Electron. This architecture allows for efficient data management and seamless communication across various operating systems, making it the ideal solution for gamers looking to enhance collaboration and connectivity within their communities.`,
+    ghLink: "https://github.com/ridwantaufk/game-connect",
+    demoLink: "https://ridwantaufk.github.io/game-connect",
   },
 ];
