@@ -1,8 +1,10 @@
 {
   "files": {
     "main.css": "/ridwan-portfolio-fullstack-developer/static/css/main.8d2ee40d.css",
-    "main.js": "/ridwan-portfolio-fullstack-developer/static/js/main.035a3307.js",
+    "main.js": "/ridwan-portfolio-fullstack-developer/static/js/main.90e2a8b6.js",
+    "static/js/187.c45d9643.chunk.js": "/ridwan-portfolio-fullstack-developer/static/js/187.c45d9643.chunk.js",
     "static/js/206.020cae30.chunk.js": "/ridwan-portfolio-fullstack-developer/static/js/206.020cae30.chunk.js",
+    "static/js/985.dcbdcbf2.chunk.js": "/ridwan-portfolio-fullstack-developer/static/js/985.dcbdcbf2.chunk.js",
     "static/media/sparepart.png": "/ridwan-portfolio-fullstack-developer/static/media/sparepart.a929df70a93a1e291f1c.png",
     "static/media/landingpage.png": "/ridwan-portfolio-fullstack-developer/static/media/landingpage.9f034b3ec7fae5e2fb1d.png",
     "static/media/faceRecognition.png": "/ridwan-portfolio-fullstack-developer/static/media/faceRecognition.559b6e4bd1eecf014e94.png",
@@ -20,6 +22,6 @@
   },
   "entrypoints": [
     "static/css/main.8d2ee40d.css",
-    "static/js/main.035a3307.js"
+    "static/js/main.90e2a8b6.js"
   ]
 }
