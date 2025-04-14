@@ -5,9 +5,10 @@ import brownies from "../../Assets/Projects/brownies.png";
 import hospitalinformationsystem from "../../Assets/Projects/hospitalinformationsystem.png";
 import sparepart from "../../Assets/Projects/sparepart.png";
 import uidesign from "../../Assets/Projects/uidesign.png";
+import datapasienrs from "../../Assets/Projects/datapasienrs.png";
 
 export const projectData = [
-  {
+{
     imgPath: brownies,
     title: "Brownies Ordering System",
     description:
@@ -62,5 +63,12 @@ export const projectData = [
       "This project features a sleek and modern UI design that embraces a futuristic aesthetic and neumorphism principles. By utilizing soft shadows and subtle highlights, the interface creates a tactile, three-dimensional feel. The design incorporates a minimalistic style with rounded shapes and a harmonious color palette, ensuring an engaging user experience. Interactive elements and smooth transitions further enhance usability, resulting in a unique and immersive interface.",
     ghLink: "https://github.com/ridwantaufk/transaksi-crypto-currency",
     demoLink: "https://ridwantaufk.github.io/transaksi-crypto-currency",
+  },
+  {
+    imgPath: datapasienrs,
+    title: "Data Pasien RS",
+    description: "This project showcases a sleek, futuristic UI design using neumorphism. It features soft shadows, rounded shapes, and a minimalistic style, creating a tactile and engaging user experience. The design includes a harmonious color palette and interactive elements for enhanced usability.",
+    ghLink: "https://github.com/ridwantaufk/laravel_ridwantaufk",
+    demoLink: "https://ridwantaufk.github.io/laravel_ridwantaufk",
   },
 ];
