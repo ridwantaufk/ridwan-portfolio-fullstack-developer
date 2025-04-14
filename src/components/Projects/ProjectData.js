@@ -6,6 +6,7 @@ import hospitalinformationsystem from "../../Assets/Projects/hospitalinformation
 import sparepart from "../../Assets/Projects/sparepart.png";
 import uidesign from "../../Assets/Projects/uidesign.png";
 import datapasienrs from "../../Assets/Projects/datapasienrs.png";
+import englishlearningplatformwithaiintegration from "../../Assets/Projects/englishlearningplatformwithaiintegration.png";
 
 export const projectData = [
 {
@@ -70,5 +71,18 @@ export const projectData = [
     description: "This project showcases a sleek, futuristic UI design using neumorphism. It features soft shadows, rounded shapes, and a minimalistic style, creating a tactile and engaging user experience. The design includes a harmonious color palette and interactive elements for enhanced usability.",
     ghLink: "https://github.com/ridwantaufk/laravel_ridwantaufk",
     demoLink: "https://ridwantaufk.github.io/laravel_ridwantaufk",
+  },
+  {
+    imgPath: englishlearningplatformwithaiintegration,
+    title: `English Learning Platform with AI Integration`,
+    description: `This English Learning Platform enhances language acquisition through innovative features and AI technologies, built with Next.js and TypeScript.
+
+It enables real-time communication via WebRTC for video calls and Socket.IO for instant messaging. Interactive learning includes dynamic quizzes that adapt to progress and gamification elements like points and badges.
+
+AI tools enhance the experience with Text-to-Speech (TTS) for pronunciation practice and Speech-to-Text (STT) for feedback on spoken input. Personalized learning paths and progress tracking through dashboards ensure tailored education.
+
+The platform also features discussion forums for community engagement and secure user management for safe access. With a robust GraphQL API, it efficiently handles data, making it a powerful tool for mastering English.`,
+    ghLink: "https://github.com/ridwantaufk/english-ai-chat-vcall-presentation",
+    demoLink: "https://ridwantaufk.github.io/english-ai-chat-vcall-presentation",
   },
 ];
