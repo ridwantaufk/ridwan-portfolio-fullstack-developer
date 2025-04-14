@@ -9,6 +9,10 @@ permissions:
   contents: write
   pages: write
 
+concurrency:
+  group: deploy-pages
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -17,25 +21,32 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # penting biar peaceiris bisa nge-push
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "23"
+          node-version: "18" # Gunakan versi stabil, jangan 23 (masih unstable)
 
       - name: Install dependencies
         run: npm install
-
-      - name: Install javascript-obfuscator
-        run: npm install javascript-obfuscator --save-dev
 
       - name: Build the project
         run: |
           unset CI
           npm run build
 
-      - name: Obfuscate JavaScript (Advanced)
+      - name: Check if build folder exists
+        run: |
+          if [ ! -d "./build" ]; then
+            echo "❌ Build folder tidak ditemukan!"
+            exit 1
+          fi
+
+      - name: Install javascript-obfuscator
+        run: npm install javascript-obfuscator --save-dev
+
+      - name: Obfuscate JavaScript
         run: |
           npx javascript-obfuscator build/static/js --output build/static/js --config obfuscator-config.json
 
@@ -45,3 +56,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
           publish_branch: gh-pages
+          commit_message: "Deploy from GitHub Actions"
