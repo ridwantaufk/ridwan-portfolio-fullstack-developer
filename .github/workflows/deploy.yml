@@ -5,6 +5,10 @@ on:
     branches:
       - gh-pages-develop
 
+permissions:
+  contents: write # Izin untuk melakukan push ke repository
+  pages: write # Izin untuk mengupdate GitHub Pages
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
