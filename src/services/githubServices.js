@@ -132,8 +132,11 @@ export const updateProjectDataFile = async (
 
   const updatedProjectArray = updatedImports.replace(
     /(export const projectData = \[\n)([\s\S]*?)(\n\];)/,
-    (match, start, entries, end) =>
-      `${start}${entries.trimEnd()},\n${newProjectEntry}${end}`
+    (match, start, entries, end) => {
+      // Hapus koma terakhir jika ada
+      const cleanedEntries = entries.trim().replace(/,\s*$/, "");
+      return `${start}${cleanedEntries},\n${newProjectEntry}${end}`;
+    }
   );
 
   // Encode dan push ulang
