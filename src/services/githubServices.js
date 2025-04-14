@@ -124,8 +124,8 @@ export const updateProjectDataFile = async (
   // Tambahkan project baru di array
   const newProjectEntry = `  {
     imgPath: ${imageName},
-    title: "${newProjectData.title}",
-    description: "${newProjectData.description}",
+    title: \`${newProjectData.title}\`,
+    description: \`${newProjectData.description}\`,
     ghLink: "${newProjectData.ghLink}",
     demoLink: "${newProjectData.demoLink || "#"}",
   },`;
