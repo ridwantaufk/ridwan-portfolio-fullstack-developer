@@ -27,10 +27,17 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install javascript-obfuscator
+        run: npm install javascript-obfuscator --save-dev
+
       - name: Build the project
         run: |
           unset CI
           npm run build
+
+      - name: Obfuscate JavaScript (Advanced)
+        run: |
+          npx javascript-obfuscator build/static/js --output build/static/js --control-flow-flattening --dead-code-injection --string-array-encoding --string-array-rotation --self-invoking --compact --numbers-to-expressions --identifier-names-renaming
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
