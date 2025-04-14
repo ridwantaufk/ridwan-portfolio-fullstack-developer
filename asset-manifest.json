@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/ridwan-portfolio-fullstack-developer/static/css/main.2541daa5.css",
-    "main.js": "/ridwan-portfolio-fullstack-developer/static/js/main.08373c77.js",
+    "main.css": "/ridwan-portfolio-fullstack-developer/static/css/main.8d2ee40d.css",
+    "main.js": "/ridwan-portfolio-fullstack-developer/static/js/main.92b59347.js",
     "static/js/206.020cae30.chunk.js": "/ridwan-portfolio-fullstack-developer/static/js/206.020cae30.chunk.js",
     "static/media/sparepart.png": "/ridwan-portfolio-fullstack-developer/static/media/sparepart.a929df70a93a1e291f1c.png",
     "static/media/landingpage.png": "/ridwan-portfolio-fullstack-developer/static/media/landingpage.9f034b3ec7fae5e2fb1d.png",
@@ -13,11 +13,11 @@
     "static/media/pp_ridwan.jpg": "/ridwan-portfolio-fullstack-developer/static/media/pp_ridwan.84b6c013e9f44e13a7c4.jpg",
     "static/media/about.png": "/ridwan-portfolio-fullstack-developer/static/media/about.aee0f771fbfc1e7b8fa8.png",
     "static/media/home-bg.jpg": "/ridwan-portfolio-fullstack-developer/static/media/home-bg.dc52d5d40a40b13154b0.jpg",
-    "static/media/pre.svg": "/ridwan-portfolio-fullstack-developer/static/media/pre.4410c5baaa673cc131da.svg",
-    "index.html": "/ridwan-portfolio-fullstack-developer/index.html"
+    "index.html": "/ridwan-portfolio-fullstack-developer/index.html",
+    "static/media/pre.svg": "/ridwan-portfolio-fullstack-developer/static/media/pre.d4812f51c8c80976eaab.svg"
   },
   "entrypoints": [
-    "static/css/main.2541daa5.css",
-    "static/js/main.08373c77.js"
+    "static/css/main.8d2ee40d.css",
+    "static/js/main.92b59347.js"
   ]
 }
