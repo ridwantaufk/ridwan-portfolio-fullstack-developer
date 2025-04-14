@@ -7,5 +7,5 @@
   "stringArrayRotate": true,
   "numbersToExpressions": true,
   "identifierNamesGenerator": "hexadecimal",
-  "exclude": ["src/components/utils/Man3D.js"]
+  "ignoreRequireImports": true
 }

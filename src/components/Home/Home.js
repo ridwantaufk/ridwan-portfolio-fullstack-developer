@@ -5,7 +5,8 @@ import Home2 from "./Home2";
 import Type from "./Type";
 import Robot3D from "../utils/Robot3D";
 import Computer3D from "../utils/Computer3D";
-import Man3D from "../utils/Man3D";
+import dynamic from "next/dynamic";
+const Man3D = dynamic(() => import("../utils/Man3D"), { ssr: false });
 
 function Home() {
   return (
