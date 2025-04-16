@@ -3,7 +3,7 @@
   "controlFlowFlattening": false,
   "deadCodeInjection": false,
   "stringArray": true,
-  "stringArrayEncoding": false,
+  "stringArrayEncoding": ["base64"],
   "stringArrayRotate": true,
   "numbersToExpressions": false,
   "identifierNamesGenerator": "hexadecimal",
