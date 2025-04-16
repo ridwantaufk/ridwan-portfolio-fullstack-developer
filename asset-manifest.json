@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ridwan-portfolio-fullstack-developer/static/css/main.e8875b6e.css",
-    "main.js": "/ridwan-portfolio-fullstack-developer/static/js/main.1ed8c77c.js",
+    "main.js": "/ridwan-portfolio-fullstack-developer/static/js/main.f778dd77.js",
     "static/js/187.c45d9643.chunk.js": "/ridwan-portfolio-fullstack-developer/static/js/187.c45d9643.chunk.js",
     "static/js/206.020cae30.chunk.js": "/ridwan-portfolio-fullstack-developer/static/js/206.020cae30.chunk.js",
     "static/js/985.dcbdcbf2.chunk.js": "/ridwan-portfolio-fullstack-developer/static/js/985.dcbdcbf2.chunk.js",
@@ -24,6 +24,6 @@
   },
   "entrypoints": [
     "static/css/main.e8875b6e.css",
-    "static/js/main.1ed8c77c.js"
+    "static/js/main.f778dd77.js"
   ]
 }
