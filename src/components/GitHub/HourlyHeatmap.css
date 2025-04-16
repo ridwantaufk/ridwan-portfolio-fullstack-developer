@@ -1,24 +1,24 @@
 .heatmap-wrapper {
   display: flex;
   flex-direction: column;
-  height: 100%; /* Pastikan wrapper mengambil semua tinggi yang tersedia */
+  height: 100%;
   width: 100%;
   padding: 15px;
-  background-color: rgba(0, 0, 0, 0.176); /* Gelap dengan transparansi */
+  background-color: rgba(0, 0, 0, 0.176);
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); /* Sedikit bayangan */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
   position: relative;
-  overflow: hidden;
+  overflow-y: hidden;
   color: #dfdfdf;
 }
 
 .heatmap-grid-wrapper {
   display: flex;
   flex-direction: column;
-  width: 100%; /* Lebar penuh */
-  flex-grow: 1; /* Grid mengisi seluruh ruang yang tersedia */
-  height: 100%; /* Grid mengikuti tinggi kontainer */
-  scrollbar-width: none; /* Firefox */
+  width: 100%;
+  flex-grow: 1;
+  height: 100%;
+  scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
@@ -46,20 +46,20 @@
 
 .heatmap-grid {
   display: grid;
-  grid-template-columns: repeat(25, 1fr); /* 25 kolom dengan lebar yang sama */
-  grid-auto-rows: 1fr; /* Membuat setiap baris memiliki tinggi yang sama dengan lebar */
-  gap: 2px; /* Jarak antar sel */
+  grid-template-columns: repeat(25, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 2px;
   font-size: 12px;
-  width: 100%; /* Lebar grid penuh */
-  height: 100%; /* Pastikan grid mengisi tinggi kontainer */
+  width: 100%;
+  height: 100%;
   box-sizing: border-box;
 }
 
 .cell,
 .activity-cell,
 .label-cell {
-  width: 100%; /* Agar setiap sel mengisi lebar yang tersedia */
-  height: 100%; /* Agar sel mengisi tinggi yang tersedia */
+  width: 100%;
+  height: 100%;
   padding: 5px;
   text-align: center;
   border-radius: 4px;
@@ -69,7 +69,7 @@
 
 .label-cell {
   font-weight: bold;
-  background-color: rgba(0, 0, 0, 0.1); /* Gelap dengan transparansi */
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .empty {
@@ -77,19 +77,19 @@
 }
 
 .hour-label-cell {
-  background-color: #333; /* Gelap */
+  background-color: #333;
   text-align: center;
 }
 
 .date-label-cell {
-  background-color: #444; /* Lebih gelap untuk tanggal */
+  background-color: #444;
   font-size: 12px;
 }
 
 .activity-cell {
   height: 20px;
   transition: background-color 0.3s ease;
-  background-color: rgba(0, 0, 0, 0.2); /* Gelap dengan transparansi */
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .activity-cell:hover {
@@ -119,7 +119,7 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  background: rgba(0, 0, 0, 0.5); /* Gelap transparan */
+  background: rgba(0, 0, 0, 0.5);
   border: 1px solid #444;
   border-radius: 10px;
   padding: 10px;

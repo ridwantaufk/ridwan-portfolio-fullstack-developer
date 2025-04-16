@@ -54,6 +54,7 @@ button:focus {
 /* Webkit-based browsers */
 ::-webkit-scrollbar {
   width: 4px; /* Thin scrollbar */
+  height: 4px; /* Thin scrollbar */
 }
 
 /* Track */
@@ -772,11 +773,6 @@ button:focus {
   height: auto;
   max-width: 150px;
   object-fit: cover;
-}
-
-/* Base Styling for List Group */
-.list-group {
-  /* transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out; */
 }
 
 /* Base Styling for List Group Items */
