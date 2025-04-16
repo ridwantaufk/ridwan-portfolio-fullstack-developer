@@ -1,11 +1,11 @@
 {
   "compact": true,
-  "controlFlowFlattening": true,
-  "deadCodeInjection": true,
-  "stringArrayEncoding": ["base64"],
+  "controlFlowFlattening": false,
+  "deadCodeInjection": false,
+  "stringArray": true,
+  "stringArrayEncoding": false,
   "stringArrayRotate": true,
-  "numbersToExpressions": true,
+  "numbersToExpressions": false,
   "identifierNamesGenerator": "hexadecimal",
-  "ignoreRequireImports": true,
-  "stringArray": false
+  "ignoreRequireImports": true
 }
