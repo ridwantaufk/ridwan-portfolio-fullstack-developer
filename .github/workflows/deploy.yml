@@ -48,7 +48,10 @@ jobs:
 
       - name: Obfuscate JavaScript
         run: |
-          npx javascript-obfuscator build/static/js --output build/static/js --config obfuscator-config.json
+          node --max-old-space-size=4096 ./node_modules/.bin/javascript-obfuscator \
+            build/static/js \
+            --output build/static/js \
+            --config obfuscator-config.json
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
