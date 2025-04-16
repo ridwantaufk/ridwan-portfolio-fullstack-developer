@@ -48,15 +48,7 @@ jobs:
 
       - name: Obfuscate JS files safely
         run: |
-          for file in build/static/js/*.js; do
-            echo "Obfuscating $file"
-            out="build/static/js/obf-$(basename "$file")"
-            node --max-old-space-size=4096 ./node_modules/.bin/javascript-obfuscator "$file" \
-              --output "$out" \
-              --config obfuscator-config.json
-
-            mv "$out" "$file"
-          done
+          npx --max-old-space-size=8192 javascript-obfuscator "$file" --output "$out" --config obfuscator-config.json
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
