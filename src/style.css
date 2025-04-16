@@ -51,25 +51,26 @@ button:focus {
 /*Scrollbar   */
 /* --------- */
 
+/* Webkit-based browsers */
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 4px; /* Thin scrollbar */
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #2d1950;
+  background: #1a0e30; /* Dark purple background */
 }
 
-/* Handle */
+/* Handle (thumb) */
 ::-webkit-scrollbar-thumb {
-  background: rgba(178, 121, 216, 0.959);
-  border-radius: 12px;
+  background: rgba(80, 90, 150, 0.6); /* Bluish color with opacity */
+  border-radius: 6px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(222, 130, 235, 0.911);
-  border-radius: 12px;
+  background: rgba(130, 140, 210, 0.8); /* Lighter bluish color on hover */
+  border-radius: 6px;
 }
 
 /* --------- */

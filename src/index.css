@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
 
 ::selection {
-  background-color: rgba(247, 239, 0, 0.615); /* Ungu */
-  color: white; /* Warna teks putih saat diseleksi */
+  background-color: rgba(169, 0, 247, 0.467); /* Ungu */
+  color: rgb(217, 0, 255); /* Warna teks putih saat diseleksi */
 }
 
 body {
@@ -292,4 +292,43 @@ button {
 /* CSS Kustom untuk placeholder dengan warna terang */
 .custom-placeholder::placeholder {
   color: #b0b0b0 !important; /* Warna lebih terang */
+}
+
+/* FloatingBox */
+/* Scrollbar untuk webkit-based browser */
+.floating-box {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  z-index: 1050;
+  width: 90%;
+  max-height: 30vh;
+  overflow: hidden;
+  opacity: 1;
+  transform: translate(-50%, 0);
+  background: linear-gradient(to right, #3a285aac, #2e296fca);
+  border-radius: 12px;
+  transition: all 0.3s ease-in-out;
+  backdrop-filter: blur(2px);
+  will-change: backdrop-filter;
+  padding: 6px;
+}
+
+.floating-box.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 20px);
+  backdrop-filter: blur(0px);
+}
+
+@media (min-width: 768px) {
+  .floating-box {
+    width: 70%;
+  }
+}
+
+@media (min-width: 992px) {
+  .floating-box {
+    width: 50%;
+  }
 }

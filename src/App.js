@@ -17,6 +17,7 @@ import "./style.css";
 import "./App.css";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import GitHubFloating from "./components/GitHub/GitHubFloating";
 
 function App() {
   const [load, updateLoad] = useState(true);
@@ -42,6 +43,7 @@ function App() {
           <Route path="/resume" element={<Resume />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
+        <GitHubFloating />
         <Footer />
       </div>
     </Router>
