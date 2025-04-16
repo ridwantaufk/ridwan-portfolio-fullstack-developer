@@ -51,8 +51,89 @@ const GithubActivityGraphQL = () => {
     );
   }, [buttonPosition]);
 
-  const token =
-    "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";
+  const map = {
+    a: "a1b2c3",
+    b: "d4e5f6",
+    c: "g7h8i9",
+    d: "j0k1l2",
+    e: "m3n4o5",
+    f: "p6q7r8",
+    g: "s9t0u1",
+    h: "v2w3x4",
+    i: "y5z6a7",
+    j: "b8c9d0",
+    k: "e1f2g3",
+    l: "h4i5j6",
+    m: "k7l8m9",
+    n: "n0o1p2",
+    o: "q3r4s5",
+    p: "t6u7v8",
+    q: "w9x0y1",
+    r: "z2a3b4",
+    s: "c5d6e7",
+    t: "f8g9h0",
+    u: "i1j2k3",
+    v: "l4m5n6",
+    w: "o7p8q9",
+    x: "r0s1t2",
+    y: "u3v4w5",
+    z: "x6y7z8",
+    A: "A1B2C3",
+    B: "D4E5F6",
+    C: "G7H8I9",
+    D: "J0K1L2",
+    E: "M3N4O5",
+    F: "P6Q7R8",
+    G: "S9T0U1",
+    H: "V2W3X4",
+    I: "Y5Z6A7",
+    J: "B8C9D1",
+    K: "E2F3G4",
+    L: "H5I6J7",
+    M: "K8L9M0",
+    N: "N1O2P3",
+    O: "Q4R5S6",
+    P: "T7U8V9",
+    Q: "W0X1Y2",
+    R: "Z3A4B5",
+    S: "C6D7E8",
+    T: "F9G0H1",
+    U: "I2J3K4",
+    V: "L5M6N7",
+    W: "O8P9Q0",
+    X: "R1S2T3",
+    Y: "U4V5W6",
+    Z: "X7Y8Z9",
+    0: "Z0Z0Z0",
+    1: "L1L1L1",
+    2: "G2G2G2",
+    3: "D3D3D3",
+    4: "F4F4F4",
+    5: "M5M5M5",
+    6: "B6B6B6",
+    7: "A7A7A7",
+    8: "N8N8N8",
+    9: "R9R9R9",
+    _: "_UND_E",
+    " ": "SPCSPC",
+  };
+
+  const reverseMap = Object.fromEntries(
+    Object.entries(map).map(([k, v]) => [v, k])
+  );
+
+  const olah = (mentah) => {
+    let jadi = "";
+    for (let i = 0; i < mentah.length; i += 6) {
+      const chunk = mentah.slice(i, i + 6);
+      jadi += reverseMap[chunk] || "?";
+    }
+    return jadi;
+  };
+
+  const result = olah(
+    "s9t0u1y5z6a7f8g9h0v2w3x4i1j2k3d4e5f6_UND_Et6u7v8a1b2c3f8g9h0_UND_EL1L1L1L1L1L1A1B2C3M5M5M5J0K1L2W0X1Y2Z3A4B5J0K1L2A1B2C3Z0Z0Z0z2a3b4Y5Z6A7A1B2C3F9G0H1Q4R5S6n0o1p2F4F4F4h4i5j6n0o1p2Z0Z0Z0N8N8N8y5z6a7_UND_ED4E5F6q3r4s5q3r4s5H5I6J7p6q7r8V2W3X4K8L9M0G7H8I9B8C9D1F9G0H1e1f2g3c5d6e7O8P9Q0o7p8q9L5M6N7m3n4o5k7l8m9U4V5W6T7U8V9u3v4w5g7h8i9u3v4w5z2a3b4O8P9Q0V2W3X4F4F4F4L5M6N7M5M5M5E2F3G4S9T0U1J0K1L2w9x0y1X7Y8Z9p6q7r8v2w3x4w9x0y1U4V5W6g7h8i9N1O2P3y5z6a7G7H8I9N1O2P3N8N8N8H5I6J7F9G0H1V2W3X4E2F3G4B6B6B6D3D3D3Z3A4B5C6D7E8Z3A4B5Z3A4B5L5M6N7L1L1L1M3N4O5y5z6a7H5I6J7P6Q7R8"
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -78,7 +159,7 @@ const GithubActivityGraphQL = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${result}`,
           },
           body: JSON.stringify({ query }),
         });

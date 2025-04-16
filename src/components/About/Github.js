@@ -50,7 +50,7 @@ function Github() {
         }
 
         setGithubData(allEvents);
-        console.log("response : ", allEvents);
+        // console.log("response : ", allEvents);
       } catch (error) {
         console.error("Error fetching GitHub data:", error);
         setGithubData([]);
