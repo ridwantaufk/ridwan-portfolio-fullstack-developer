@@ -46,12 +46,14 @@ jobs:
       - name: Install javascript-obfuscator
         run: npm install javascript-obfuscator --save-dev
 
-      - name: Obfuscate JavaScript
+      - name: Obfuscate JS files one by one
         run: |
-          node --max-old-space-size=4096 ./node_modules/.bin/javascript-obfuscator \
-            build/static/js \
-            --output build/static/js \
-            --config obfuscator-config.json
+          for file in build/static/js/*.js; do
+            echo "Obfuscating $file"
+            node --max-old-space-size=4096 ./node_modules/.bin/javascript-obfuscator "$file" \
+              --output "$file" \
+              --config obfuscator-config.json
+          done
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
