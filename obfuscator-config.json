@@ -2,9 +2,8 @@
   "compact": true,
   "controlFlowFlattening": false,
   "deadCodeInjection": false,
-  "stringArray": true,
+  "stringArray": false,
   "stringArrayEncoding": ["base64"],
-  "stringArrayRotate": true,
   "numbersToExpressions": false,
   "identifierNamesGenerator": "hexadecimal",
   "ignoreRequireImports": true
