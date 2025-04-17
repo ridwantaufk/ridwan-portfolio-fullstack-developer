@@ -272,9 +272,9 @@ const GithubActivityGraphQL = () => {
   return (
     <>
       {showHeatmap && (
-        <FloatingBox>
+        <FloatingBox setShowHeatmap={setShowHeatmap}>
           <div>
-            <HourlyHeatmap data={data} setShowHeatmap={setShowHeatmap} />
+            <HourlyHeatmap data={data} />
           </div>
         </FloatingBox>
       )}
@@ -311,28 +311,25 @@ const GithubActivityGraphQL = () => {
                 ? "scale(0.96)"
                 : "scale(1)",
             backdropFilter: "blur(3px)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center", // <-- Ini yang bikin iconnya selalu di tengah
           }}
         >
           <div
             style={{
-              background: "rgba(16, 44, 67, 0.9) ",
+              background: "rgba(16, 44, 67, 0.9)",
               boxShadow:
                 "inset 0 1px 2px 3px rgba(16, 44, 67, 0.7), -1px -1px 3px 1px rgba(170, 170, 170, 0.3), 1px 1px 3px 3px rgba(6, 13, 18, 0.6)",
-              width: "fit-content",
-              height: "fit-content",
-              margin: "auto",
+              width: "36px",
+              height: "36px",
               borderRadius: "50%",
-              display: "flex", // Membuat div menjadi flex container
-              alignItems: "center", // Vertikal center
-              justifyContent: "center", // Horizontal center
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
-            <FaGithub
-              style={{
-                fontSize: "28px",
-                color: "#fff",
-              }}
-            />
+            <FaGithub style={{ fontSize: "20px", color: "#fff" }} />
           </div>
         </button>
       )}

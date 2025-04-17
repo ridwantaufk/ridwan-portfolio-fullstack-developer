@@ -4,7 +4,7 @@ import "./HourlyHeatmap.css";
 import { BsClockHistory, BsX } from "react-icons/bs";
 import ReactTooltip from "react-tooltip";
 
-const HourlyHeatmap = ({ data, setShowHeatmap }) => {
+const HourlyHeatmap = ({ data }) => {
   const [viewMode, setViewMode] = useState("grid"); // grid or chart
   const [chartType, setChartType] = useState("heatmap");
   const [zoomed, setZoomed] = useState(false);
@@ -215,30 +215,6 @@ const HourlyHeatmap = ({ data, setShowHeatmap }) => {
 
   return (
     <div className="heatmap-wrapper" ref={chartContainerRef}>
-      <button
-        data-tip
-        data-for="close-tooltip" // Menghubungkan dengan ID tooltip
-        className="btn btn-lg text-info position-absolute top-0 end-0 m-2"
-        onClick={() => setShowHeatmap(false)}
-        style={{ zIndex: 10 }}
-      >
-        <BsX />
-      </button>
-
-      {/* Tooltip */}
-      <ReactTooltip
-        id="close-tooltip"
-        effect="solid"
-        delayShow={100}
-        globalEventOff="click"
-        place="left"
-      >
-        Tutup heatmap
-      </ReactTooltip>
-      <h6 className="m-0 d-flex align-items-center justify-content-center text-center">
-        <BsClockHistory className="me-2 fs-5" />
-        Aktivitas GitHub/jam
-      </h6>
       <div className="d-flex justify-content-between align-items-center mb-2">
         <div className="d-flex align-items-center gap-2">
           <label className="form-label m-0">Tampilan:</label>
