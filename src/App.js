@@ -18,6 +18,7 @@ import "./App.css";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import GitHubFloating from "./components/GitHub/GitHubFloating";
+import { ProjectContent } from "./components/Projects/Application/Content";
 
 function App() {
   const [load, updateLoad] = useState(true);
@@ -44,6 +45,7 @@ function App() {
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <GitHubFloating />
+        <ProjectContent />
         <Footer />
       </div>
     </Router>

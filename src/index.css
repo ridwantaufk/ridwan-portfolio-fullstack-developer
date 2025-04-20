@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
 
 ::selection {
   background-color: rgba(169, 0, 247, 0.467); /* Ungu */

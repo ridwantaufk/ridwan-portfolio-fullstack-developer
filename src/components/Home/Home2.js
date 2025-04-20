@@ -46,7 +46,7 @@ function Home2() {
                 className="home-about-body"
                 style={{
                   color: darkMode ? "white" : "black",
-                  textAlign: "justify", // Added justify alignment
+                  textAlign: "justify",
                 }}
               >
                 I am a passionate{" "}
@@ -96,7 +96,6 @@ function Home2() {
 
             <Col md={3} className="myAvtar" style={{ marginTop: "30px" }}>
               {" "}
-              {/* Added margin */}
               <Tilt>
                 <img
                   src={myImg}
@@ -122,7 +121,7 @@ function Home2() {
               <p
                 style={{
                   color: darkMode ? "white" : "black",
-                  textAlign: "justify", // Added justify alignment
+                  textAlign: "justify",
                 }}
               >
                 Feel free to <span className="purple">connect </span>with me
@@ -133,7 +132,7 @@ function Home2() {
                     href="https://github.com/ridwantaufk"
                     target="_blank"
                     rel="noreferrer"
-                    className="icon-colour  home-social-icons"
+                    className="icon-colour home-social-icons"
                   >
                     <AiFillGithub />
                   </a>
@@ -143,7 +142,7 @@ function Home2() {
                     href="https://wa.me/6281312025217"
                     target="_blank"
                     rel="noreferrer"
-                    className="icon-colour  home-social-icons"
+                    className="icon-colour home-social-icons"
                   >
                     <FaWhatsapp />
                   </a>
@@ -153,7 +152,7 @@ function Home2() {
                     href="https://linkedin.com/in/ridwan-taufik-b3624325a"
                     target="_blank"
                     rel="noreferrer"
-                    className="icon-colour  home-social-icons"
+                    className="icon-colour home-social-icons"
                   >
                     <FaLinkedinIn />
                   </a>

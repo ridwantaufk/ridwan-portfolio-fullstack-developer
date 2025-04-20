@@ -35,11 +35,9 @@ import { GrMysql } from "react-icons/gr";
 import ReactTooltip from "react-tooltip";
 
 function Techstack() {
-  // State filter
   const [selectedSkill, setSelectedSkill] = useState("All");
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  // Data teknologi
   const techData = [
     {
       icon: <SiNextdotjs style={{ color: "#ffffff" }} />,
@@ -147,13 +145,13 @@ function Techstack() {
       icon: <DiPhp style={{ color: "#787CB5" }} />,
       label: "PHP",
       skillLevel: "advanced",
-      category: "Bahasa Pemrograman",
+      category: "Programming Language",
     },
     {
       icon: <SiPython style={{ color: "#306998" }} />,
       label: "Python",
       skillLevel: "medium",
-      category: "Bahasa Pemrograman",
+      category: "Programming Language",
     },
     {
       icon: <SiChakraui style={{ color: "#319795" }} />,
@@ -171,19 +169,19 @@ function Techstack() {
       icon: <DiJava style={{ color: "#007396" }} />,
       label: "Java",
       skillLevel: "medium",
-      category: "Bahasa Pemrograman",
+      category: "Programming Language",
     },
     {
       icon: <SiCplusplus style={{ color: "#00599C" }} />,
       label: "C++",
       skillLevel: "beginner",
-      category: "Bahasa Pemrograman",
+      category: "Programming Language",
     },
     {
       icon: <SiCsharp style={{ color: "#C8C8C8" }} />,
       label: "C#",
       skillLevel: "beginner",
-      category: "Bahasa Pemrograman",
+      category: "Programming Language",
     },
     {
       icon: <SiFlutter style={{ color: "#02569B" }} />,
@@ -207,19 +205,19 @@ function Techstack() {
       icon: <SiJavascript style={{ color: "#F7DF1E" }} />,
       label: "JavaScript",
       skillLevel: "expert",
-      category: "Bahasa Pemrograman",
+      category: "Programming Language",
     },
     {
       icon: <SiTypescript style={{ color: "#3178C6" }} />,
       label: "TypeScript",
       skillLevel: "advanced",
-      category: "Bahasa Pemrograman",
+      category: "Programming Language",
     },
     {
       icon: <SiDart style={{ color: "#00B4B6" }} />,
       label: "Dart",
       skillLevel: "beginner",
-      category: "Bahasa Pemrograman",
+      category: "Programming Language",
     },
     {
       icon: <SiSocketdotio style={{ color: "#ffffff" }} />,
@@ -235,7 +233,6 @@ function Techstack() {
     },
   ];
 
-  // List unique options
   const skillLevels = ["All", "beginner", "medium", "advanced", "expert"];
 
   const categories = [
@@ -245,7 +242,6 @@ function Techstack() {
     ),
   ];
 
-  // Filter logic
   const filteredData = techData.filter((tech) => {
     return (
       (selectedSkill === "All" || tech.skillLevel === selectedSkill) &&
@@ -270,11 +266,27 @@ function Techstack() {
             value={selectedSkill}
             onChange={(e) => setSelectedSkill(e.target.value)}
             className="modern-select"
+            style={{
+              appearance: "none",
+              border: "none",
+              borderRadius: "0.5rem",
+              padding: "0.5rem 2rem 0.5rem 1.5rem",
+              backgroundColor: "rgba(241, 243, 245, 0.5)",
+              color: "#495057",
+              fontSize: "0.875rem",
+              fontWeight: "500",
+              boxShadow: "0 2px 10px rgba(0, 0, 0, 0.3)",
+              transition: "background-color 0.2s ease",
+              backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23999'><path d='M7 10l5 5 5-5z'/></svg>")`,
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "right 1rem center",
+              backgroundSize: "1rem",
+            }}
           >
             {skillLevels.map((level) => (
               <option key={level} value={level}>
                 {level === "All"
-                  ? "Semua Level"
+                  ? "All Levels"
                   : level.charAt(0).toUpperCase() + level.slice(1)}
               </option>
             ))}
@@ -282,16 +294,32 @@ function Techstack() {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label className="fw-semibold">Kategori</Form.Label>
+          <Form.Label className="fw-semibold">Category</Form.Label>
           <Form.Select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
             className="modern-select"
+            style={{
+              appearance: "none",
+              border: "none",
+              borderRadius: "0.5rem",
+              padding: "0.5rem 1rem 0.5rem 1.5rem",
+              backgroundColor: "rgba(241, 243, 245, 0.5)",
+              color: "#495057",
+              fontSize: "0.875rem",
+              fontWeight: "500",
+              boxShadow: "0 2px 10px rgba(0, 0, 0, 0.3)",
+              transition: "background-color 0.2s ease",
+              backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23999'><path d='M7 10l5 5 5-5z'/></svg>")`,
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "right 1rem center",
+              backgroundSize: "1rem",
+            }}
           >
             {categories.map((cat) => (
               <option key={cat} value={cat}>
                 {cat === "All"
-                  ? "Semua Kategori"
+                  ? "All Categories"
                   : cat.replace(/([A-Z])/g, "$1")}
               </option>
             ))}
@@ -311,7 +339,7 @@ function Techstack() {
             {tech.icon}
             <div className={`skill-scale ${tech.skillLevel}`}>
               <div className="line-with-dots">
-                <span className="dot-wrapper" data-tip="Pemula">
+                <span className="dot-wrapper" data-tip="Beginner">
                   <span className="dot" />
                 </span>
                 <span className="line" />
@@ -319,11 +347,11 @@ function Techstack() {
                   <span className="dot" />
                 </span>
                 <span className="line" />
-                <span className="dot-wrapper" data-tip="Berpengalaman">
+                <span className="dot-wrapper" data-tip="Advanced">
                   <span className="dot" />
                 </span>
                 <span className="line" />
-                <span className="dot-wrapper" data-tip="Sangat Mahir">
+                <span className="dot-wrapper" data-tip="Expert">
                   <span className="dot" />
                 </span>
               </div>

@@ -1,11 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import HourlyHeatmap from "./HourlyHeatmap";
-import FloatingBox from "../FloatingBox";
+import { FloatingBox } from "../FloatingBox";
 import { FaGithub } from "react-icons/fa";
 
 const GithubActivityGraphQL = () => {
   const [data, setData] = useState({});
-  const [showHeatmap, setShowHeatmap] = useState(true);
+  const [showHeatmap, setShowHeatmap] = useState(() => {
+    const stored = localStorage.getItem("statusHeatmap");
+    if (stored === null) {
+      localStorage.setItem("statusHeatmap", JSON.stringify(true));
+      return true;
+    }
+    return JSON.parse(stored);
+  });
   const [hasMoved, setHasMoved] = useState(false);
   const [cursorStyle, setCursorStyle] = useState("grab");
   const holdTimer = useRef(null);
@@ -29,7 +36,6 @@ const GithubActivityGraphQL = () => {
       }
     }
 
-    // fallback: pojok kanan bawah
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
     return {
@@ -227,7 +233,6 @@ const GithubActivityGraphQL = () => {
     setDragging(false);
     setCursorStyle("grab");
 
-    // Save posisi ke localStorage
     localStorage.setItem(
       "floating-button-position",
       JSON.stringify({ x: finalX, y: finalY })
@@ -265,7 +270,8 @@ const GithubActivityGraphQL = () => {
 
   const handleClick = () => {
     if (!hasMoved) {
-      setShowHeatmap(true);
+      localStorage.setItem("statusHeatmap", JSON.stringify(true));
+      setShowHeatmap(JSON.parse(localStorage.getItem("statusHeatmap")));
     }
   };
 
@@ -313,7 +319,7 @@ const GithubActivityGraphQL = () => {
             backdropFilter: "blur(3px)",
             display: "flex",
             alignItems: "center",
-            justifyContent: "center", // <-- Ini yang bikin iconnya selalu di tengah
+            justifyContent: "center",
           }}
         >
           <div

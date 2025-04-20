@@ -353,51 +353,26 @@ button:focus {
 }
 
 .home-social-icons {
-  position: relative !important;
-  display: inline-block !important;
-  width: 40px !important;
-  height: 40px !important;
-  text-align: center !important;
-  font-size: 1.2em !important;
-  line-height: 2em !important;
-  background: rgba(255, 255, 255, 0.972) !important;
-  border-radius: 50% !important;
-  transition: 0.5s !important;
-}
-
-.home-social-icons::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.7em;
+  padding: 2px;
+  background: rgba(255, 255, 255, 0.972);
   border-radius: 50%;
-  background: #68187a;
-  transition: 0.5s;
-  transform: scale(0.9);
-  z-index: -1;
+  transition: all 0.3s ease;
+  z-index: 0;
+  color: #700c86;
 }
 
-.home-social-icons:hover::before {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px #801f95;
-}
-
-.home-social-icons:hover {
-  color: #87209e;
-  box-shadow: 0 0 5px #87209e;
-  text-shadow: 0 0 2px #87209e;
+.social-icons a:hover {
+  color: #cf68ff;
 }
 
 .social-icons {
-  display: inline-block !important;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
-.icon-colour {
-  color: #700c86 !important;
+  display: inline-block;
+  padding: 0 15px;
 }
 
 /* --------- */
@@ -407,8 +382,11 @@ button:focus {
   background-color: rgb(10, 4, 22);
   bottom: 0 !important;
   padding-top: 10px !important;
-  padding-bottom: 8px !important ;
+  padding-bottom: 8px !important;
+  box-shadow: 8px 8px 15px #000000, -8px -8px 15px #3a1a57; /* Efek Neomorphism */
+  border-radius: 12px;
 }
+
 .footer-copywright {
   text-align: center !important;
 }
@@ -434,10 +412,88 @@ button:focus {
   margin-top: 0.5em !important;
   margin-bottom: 0.5em !important;
 }
+
 .footer-icons {
   margin-top: 0.5em !important;
   margin-bottom: 0.5em !important;
   padding: 0 !important;
+  display: flex;
+  justify-content: center; /* Center icons */
+  gap: 15px; /* Space between icons */
+  list-style-type: none;
+}
+
+.social-icons-footer {
+  transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border-radius: 50%;
+}
+
+.social-icons-footer a {
+  color: white; /* Default color */
+  text-decoration: none;
+  padding: 10px; /* Adjusted padding for a smaller size */
+  border-radius: 50%; /* Ensure circular shape */
+  background: rgba(58, 26, 87, 0.9); /* Background color for icons */
+  box-shadow: 5px 5px 10px #000000, -2px -2px 7px #552482,
+    inset 2px 2px 2px #552482;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  transition: transform 0.2s, box-shadow 0.2s, color 0.3s; /* Smooth transition for color */
+}
+
+.social-icons-footer:hover a {
+  box-shadow: 4px 4px 10px #000000, -1px -1px 7px #552482,
+    inset 2px 2px 2px #552482ac;
+}
+
+/* Gradasi untuk ikon saat hover */
+.social-icons-footer a.whatsapp:hover i {
+  background: linear-gradient(45deg, #25d366, #128c7e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.social-icons-footer a.github:hover i {
+  background: linear-gradient(45deg, #000000, #1f2328);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.social-icons-footer a.linkedin:hover i {
+  background: linear-gradient(45deg, #0077b5, #005582);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.social-icons-footer a.instagram:hover i {
+  background: linear-gradient(45deg, #e1306c, #fd1d1d, #fcb045);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Hover effects */
+.social-icons-footer:hover a.whatsapp {
+  color: #25d366; /* WhatsApp color */
+}
+
+.social-icons-footer:hover a.github {
+  color: #1f2328; /* GitHub color */
+}
+
+.social-icons-footer:hover a.linkedin {
+  color: #0077b5; /* LinkedIn color */
+}
+
+.social-icons-footer:hover a.instagram {
+  color: #fd1d1d; /* Tidak ada warna default, biarkan gradasi terlihat */
+}
+
+.social-icons-footer:active a {
+  transform: translateY(1px); /* Smaller active press */
+  box-shadow: inset 1px 1px 3px #5d2394d8, inset 1px 1px 1px 2px rgb(26, 26, 26),
+    inset 2px 2px 2px #3a1a57, 3px 3px 4px #000000c2, 0 0 7px #3a1a57;
 }
 
 .blockquote-footer {
@@ -1008,4 +1064,71 @@ button:focus {
       0 0 10px rgba(0, 0, 255, 0.5), 0 0 12px rgba(255, 255, 0, 0.6),
       0 0 12px rgba(0, 255, 255, 0.6), 0 0 12px rgba(255, 0, 255, 0.6);
   }
+}
+
+.open-arrow-position {
+  right: -30%;
+  width: 30px;
+  height: 30px;
+  transition: all 0.3s;
+}
+
+.close-arrow-position {
+  left: calc(10vw + 20px); /* Base position with 20px added */
+  width: 30px; /* Fixed width */
+  height: 30px; /* Fixed height */
+}
+
+.gradient-arrow-open {
+  fill: url(#gradient-arrow-open);
+  opacity: 0.3;
+  transition: opacity 0.3s ease-out;
+  cursor: pointer;
+}
+
+.gradient-arrow-open:hover {
+  opacity: 0.7;
+}
+
+.gradient-arrow-close {
+  fill: url(#gradient-arrow-close);
+  opacity: 0.6;
+  cursor: pointer;
+  transition: all 0.1s ease-in;
+}
+.gradient-arrow-close:hover {
+  opacity: 0.9;
+}
+
+.open-floating-box-app {
+  width: calc(10vw + 20px); /* Base width with 20px added */
+  transition: all 0.3s ease-in;
+}
+
+@media screen and (max-width: 1000px) {
+  .open-floating-box-app {
+    width: calc(20vw + 20px); /* Width adjustment for screens up to 1000px */
+  }
+  .close-arrow-position {
+    left: calc(20vw + 20px); /* Position adjustment for screens up to 1000px */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .open-floating-box-app {
+    width: calc(30vw + 20px); /* Width adjustment for screens up to 768px */
+  }
+  .close-arrow-position {
+    left: calc(30vw + 20px); /* Position adjustment for screens up to 768px */
+  }
+}
+
+.close-floating-box-app {
+  width: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-out;
+}
+
+.close-floating-box-app div {
+  overflow: hidden;
 }
