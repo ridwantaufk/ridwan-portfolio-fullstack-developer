@@ -6,6 +6,7 @@ import { addProjectToGitHub } from "../../services/githubServices";
 
 const AddProjectModal = ({ show, onClose, onAdd, setStatus }) => {
   const [isAuth, setIsAuth] = useState(false);
+  const [cropperKey, setCropperKey] = useState(0);
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
@@ -52,23 +53,31 @@ const AddProjectModal = ({ show, onClose, onAdd, setStatus }) => {
   const handleLogin = () => {
     setFormErrors({ username: "", password: "" });
 
-    if (credentials.username === "" && credentials.password === "") {
+    if (
+      credentials.username === "qwertyuiop" &&
+      credentials.password === "poiuytrewq"
+    ) {
       setIsAuth(true);
+      setFormErrors({});
     } else {
-      setCredentials({ username: "", password: "" });
+      const errors = {};
 
-      if (credentials.username !== "") {
-        setFormErrors((prevErrors) => ({
-          ...prevErrors,
-          username: "Wrong username!",
-        }));
+      if (credentials.username !== "qwertyuiop") {
+        errors.username =
+          credentials.username === ""
+            ? "Username is required!"
+            : "Wrong username!";
       }
-      if (credentials.password !== "") {
-        setFormErrors((prevErrors) => ({
-          ...prevErrors,
-          password: "Wrong password!",
-        }));
+
+      if (credentials.password !== "poiuytrewq") {
+        errors.password =
+          credentials.password === ""
+            ? "Password is required!"
+            : "Wrong password!";
       }
+
+      setFormErrors(errors);
+      setCredentials({ username: "", password: "" });
     }
   };
 
@@ -90,10 +99,11 @@ const AddProjectModal = ({ show, onClose, onAdd, setStatus }) => {
 
     try {
       // Kirim project ke GitHub
+      // console.log("newProject : ", newProject);
+      // return;
       await addProjectToGitHub(newProject);
       //   onAdd(newProject);
 
-      // Set deploy status to checking
       setStatus(true);
 
       resetForm();
@@ -130,6 +140,9 @@ const AddProjectModal = ({ show, onClose, onAdd, setStatus }) => {
           ...prevState,
           imgPath: img.src,
         }));
+
+        setCropData(null);
+        setCropperVisible(true);
       };
     };
     reader.readAsDataURL(file);
@@ -211,6 +224,7 @@ const AddProjectModal = ({ show, onClose, onAdd, setStatus }) => {
                   }}
                 >
                   <Cropper
+                    key={cropperKey}
                     ref={cropperRef}
                     src={newProject.imgPath}
                     style={{
