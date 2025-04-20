@@ -1,12 +1,5 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import {
-  AiFillGithub,
-  AiOutlineTwitter,
-  AiFillInstagram,
-} from "react-icons/ai";
-import { FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
-import { GrWhatsapp } from "react-icons/gr";
 
 function Footer() {
   let date = new Date();
@@ -22,44 +15,48 @@ function Footer() {
         </Col>
         <Col md="4" className="footer-body">
           <ul className="footer-icons">
-            <li className="social-icons">
+            <li className="social-icons-footer">
               <a
+                className="whatsapp"
+                // href="javascript:void(0)"
                 href="https://wa.me/6281312025217"
-                style={{ color: "white" }}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaWhatsapp />
+                <i className="fab fa-whatsapp"></i>
               </a>
             </li>
-            <li className="social-icons">
+            <li className="social-icons-footer">
               <a
+                className="github"
+                // href="javascript:void(0)"
                 href="https://github.com/ridwantaufk"
-                style={{ color: "white" }}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <AiFillGithub />
+                <i className="fab fa-github"></i>
               </a>
             </li>
-            <li className="social-icons">
+            <li className="social-icons-footer">
               <a
+                className="linkedin"
+                // href="javascript:void(0)"
                 href="https://linkedin.com/in/ridwan-taufik-b3624325a"
-                style={{ color: "white" }}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaLinkedinIn />
+                <i className="fab fa-linkedin"></i>
               </a>
             </li>
-            <li className="social-icons">
+            <li className="social-icons-footer">
               <a
+                className="instagram"
+                // href="javascript:void(0)"
                 href="https://instagram.com/ridwantaufk"
-                style={{ color: "white" }}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <AiFillInstagram />
+                <i className="fab fa-instagram"></i>
               </a>
             </li>
           </ul>

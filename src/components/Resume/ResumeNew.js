@@ -4,7 +4,6 @@ import { AiOutlineDownload } from "react-icons/ai";
 import { GlobalWorkerOptions, getDocument } from "pdfjs-dist";
 import "pdfjs-dist/web/pdf_viewer.css";
 
-// Tentukan sumber worker PDF
 GlobalWorkerOptions.workerSrc =
   "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js";
 
@@ -13,16 +12,14 @@ function ResumeNew() {
 
   useEffect(() => {
     const loadingTask = getDocument(
-      `${window.location.origin}/ridwan-portfolio-fullstack-developer/Assets/CV_Ridwan_Taufik_Programmer.pdf`
+      `${window.location.origin}/ridwan-portfolio-fullstack-developer/assets/CV_Ridwan_Taufik_Programmer.pdf`
     );
 
     loadingTask.promise.then((pdf) => {
       const totalPages = pdf.numPages;
 
-      // Bersihkan pdfContainerRef agar tidak ada halaman yang terduplikasi
       pdfContainerRef.current.innerHTML = "";
 
-      // Render setiap halaman dalam PDF
       for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
         pdf.getPage(pageNum).then((page) => {
           const scale = 1.5;
@@ -38,7 +35,6 @@ function ResumeNew() {
             viewport: viewport,
           });
 
-          // Tambahkan canvas yang baru saja dirender ke pdfContainerRef
           pdfContainerRef.current.appendChild(canvas);
         });
       }
@@ -57,7 +53,7 @@ function ResumeNew() {
         >
           <Button
             variant="primary"
-            href={`${window.location.origin}/ridwan-portfolio-fullstack-developer/Assets/CV_Ridwan_Taufik_Programmer.pdf`}
+            href={`${window.location.origin}/ridwan-portfolio-fullstack-developer/assets/CV_Ridwan_Taufik_Programmer.pdf`}
             target="_blank"
             download="CV_Ridwan_Taufik_Programmer.pdf"
             className="download-btn"

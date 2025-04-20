@@ -4,27 +4,25 @@ import "./HourlyHeatmap.css";
 import { BsClockHistory, BsX } from "react-icons/bs";
 import ReactTooltip from "react-tooltip";
 
-const HourlyHeatmap = ({ data, setShowHeatmap }) => {
-  const [viewMode, setViewMode] = useState("grid"); // grid or chart
+const HourlyHeatmap = ({ data }) => {
+  const [viewMode, setViewMode] = useState("grid");
   const [chartType, setChartType] = useState("heatmap");
   const [zoomed, setZoomed] = useState(false);
 
-  const chartContainerRef = useRef(null); // Refs untuk kontainer grafik
-  const [chartHeight, setChartHeight] = useState(250); // Tinggi default grafik
+  const chartContainerRef = useRef(null);
+  const [chartHeight, setChartHeight] = useState(250);
 
   const dates = Object.keys(data);
   const allHours = Array.from({ length: 24 }, (_, i) => i);
 
-  // Responsif untuk zooming
   useEffect(() => {
     const handleResize = () => {
       const screenWidth = window.innerWidth;
       setZoomed(screenWidth <= 900);
 
-      // Update tinggi grafik berdasarkan ukuran kontainer
       if (chartContainerRef.current) {
         const containerHeight = chartContainerRef.current.offsetHeight;
-        setChartHeight(containerHeight * 0.4); // Ambil 40% dari tinggi kontainer
+        setChartHeight(containerHeight * 0.4);
       }
     };
     handleResize();
@@ -40,19 +38,19 @@ const HourlyHeatmap = ({ data, setShowHeatmap }) => {
   };
 
   const getColor = (count) => {
-    if (count === 0) return "rgba(0, 0, 0, 0.5)"; // Gelap transparan untuk tidak ada aktivitas
-    if (count < 3) return "#0eff00"; // Hijau gelap untuk aktivitas rendah
-    if (count < 6) return "#4caf50"; // Hijau lebih gelap untuk aktivitas sedang
-    if (count < 10) return "#388e3c"; // Hijau yang lebih gelap untuk aktivitas tinggi
-    return "#1b5e20"; // Hijau sangat gelap untuk aktivitas sangat tinggi
+    if (count === 0) return "rgba(0, 0, 0, 0.5)";
+    if (count < 3) return "#0eff00";
+    if (count < 6) return "#4caf50";
+    if (count < 10) return "#388e3c";
+    return "#1b5e20";
   };
 
   const getBorderColor = (count) => {
-    if (count === 0) return "rgba(0, 0, 0, 0.2)"; // Gelap transparan untuk tidak ada aktivitas
-    if (count < 3) return "#0eff00"; // Hijau gelap untuk aktivitas rendah
-    if (count < 6) return "#4caf50"; // Hijau lebih gelap untuk aktivitas sedang
-    if (count < 10) return "#388e3c"; // Hijau yang lebih gelap untuk aktivitas tinggi
-    return "#1b5e20"; // Hijau sangat gelap untuk aktivitas sangat tinggi
+    if (count === 0) return "rgba(0, 0, 0, 0.2)";
+    if (count < 3) return "#0eff00";
+    if (count < 6) return "#4caf50";
+    if (count < 10) return "#388e3c";
+    return "#1b5e20";
   };
 
   const zData = dates.map((date) => {
@@ -72,11 +70,11 @@ const HourlyHeatmap = ({ data, setShowHeatmap }) => {
           y: dates,
           type: "heatmap",
           colorscale: [
-            [0, "#ebedf0"], // Warna awal (terang ke abu-abu)
-            [0.2, "#c6e48b"], // Warna hijau cerah (lebih terang dari sebelumnya)
-            [0.4, "#8dbd53"], // Warna hijau yang lebih mencolok
-            [0.6, "#4caf50"], // Warna hijau yang lebih jelas dan mencolok
-            [1, "#388e3c"], // Warna hijau yang lebih kuat dan cerah
+            [0, "#ebedf0"],
+            [0.2, "#c6e48b"],
+            [0.4, "#8dbd53"],
+            [0.6, "#4caf50"],
+            [1, "#388e3c"],
           ],
 
           hoverongaps: false,
@@ -90,14 +88,14 @@ const HourlyHeatmap = ({ data, setShowHeatmap }) => {
       layout: {
         title: {
           text: "GitHub Activity Heatmap",
-          font: { color: "#fff" }, // Warna judul
+          font: { color: "#fff" },
         },
         xaxis: {
           title: "Hour",
           tickangle: -45,
           tickvals: allHours,
-          color: "#fff", // Warna label dan garis
-          gridcolor: "rgba(255,255,255,0.1)", // Grid halus
+          color: "#fff",
+          gridcolor: "rgba(255,255,255,0.1)",
         },
         yaxis: {
           title: "Date",
@@ -108,10 +106,10 @@ const HourlyHeatmap = ({ data, setShowHeatmap }) => {
         showlegend: false,
         height: chartHeight,
         width: "100%",
-        paper_bgcolor: "rgba(0, 0, 0, 0)", // Background luar
-        plot_bgcolor: "rgba(0, 0, 0, 0)", // Background grafik
+        paper_bgcolor: "rgba(0, 0, 0, 0)",
+        plot_bgcolor: "rgba(0, 0, 0, 0)",
         font: {
-          color: "#fff", // Warna teks default
+          color: "#fff",
         },
       },
     },
@@ -215,37 +213,30 @@ const HourlyHeatmap = ({ data, setShowHeatmap }) => {
 
   return (
     <div className="heatmap-wrapper" ref={chartContainerRef}>
-      <button
-        data-tip
-        data-for="close-tooltip" // Menghubungkan dengan ID tooltip
-        className="btn btn-lg text-info position-absolute top-0 end-0 m-2"
-        onClick={() => setShowHeatmap(false)}
-        style={{ zIndex: 10 }}
-      >
-        <BsX />
-      </button>
-
-      {/* Tooltip */}
-      <ReactTooltip
-        id="close-tooltip"
-        effect="solid"
-        delayShow={100}
-        globalEventOff="click"
-        place="left"
-      >
-        Tutup heatmap
-      </ReactTooltip>
-      <h6 className="m-0 d-flex align-items-center justify-content-center text-center">
-        <BsClockHistory className="me-2 fs-5" />
-        Aktivitas GitHub/jam
-      </h6>
       <div className="d-flex justify-content-between align-items-center mb-2">
         <div className="d-flex align-items-center gap-2">
-          <label className="form-label m-0">Tampilan:</label>
+          <label className="form-label m-0">Display </label>
           <select
             className="form-select form-select-sm"
             value={viewMode}
             onChange={(e) => setViewMode(e.target.value)}
+            style={{
+              appearance: "none",
+              border: "none",
+              borderRadius: "0.5rem",
+              padding: "0.3rem 2rem 0.3rem 1.5rem",
+              backgroundColor: "rgba(241, 243, 245, 0.5) !important",
+              color: "#495057",
+              fontSize: "0.875rem",
+              fontWeight: "500",
+              boxShadow: "0 2px 10px rgba(0, 0, 0, 0.3)",
+              transition: "background-color 0.2s ease",
+              backgroundImage:
+                "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23999'><path d='M7 10l5 5 5-5z'/></svg>\")",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "right 1rem center",
+              backgroundSize: "1rem",
+            }}
           >
             <option value="grid">Grid</option>
             <option value="heatmap">Heatmap</option>
@@ -258,7 +249,6 @@ const HourlyHeatmap = ({ data, setShowHeatmap }) => {
       {viewMode === "grid" ? (
         <div className="heatmap-grid-wrapper">
           <div className="heatmap-grid">
-            {/* Baris header kosong + jam */}
             <div className="cell label-cell empty" />
             {allHours.map((hour) => (
               <div key={`h-${hour}`} className="cell hour-label-cell">
@@ -266,7 +256,6 @@ const HourlyHeatmap = ({ data, setShowHeatmap }) => {
               </div>
             ))}
 
-            {/* Baris tanggal + kotak aktivitas */}
             {dates.map((date, rowIdx) => {
               const hourData = data[date] || {};
               const shortDate = new Date(date).toLocaleDateString("id-ID", {
@@ -302,13 +291,13 @@ const HourlyHeatmap = ({ data, setShowHeatmap }) => {
           data={chartConfig[viewMode].data}
           layout={{
             ...chartConfig[viewMode].layout,
-            height: zoomed ? 200 : 300, // Mengurangi tinggi untuk tampilan zoomed
-            width: "100%", // Lebar otomatis mengikuti kontainer
-            autosize: true, // Mengizinkan Plotly menyesuaikan ukuran
+            height: zoomed ? 200 : 300,
+            width: "100%",
+            autosize: true,
           }}
           config={{
             scrollZoom: true,
-            responsive: true, // Menyesuaikan ukuran grafik responsif terhadap ukuran layar
+            responsive: true,
           }}
           onRelayout={handleRelayout}
         />

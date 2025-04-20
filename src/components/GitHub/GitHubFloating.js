@@ -1,11 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import HourlyHeatmap from "./HourlyHeatmap";
-import FloatingBox from "../FloatingBox";
-import { AiOutlineEye } from "react-icons/ai";
+import { FloatingBox } from "../FloatingBox";
+import { FaGithub } from "react-icons/fa";
 
 const GithubActivityGraphQL = () => {
   const [data, setData] = useState({});
-  const [showHeatmap, setShowHeatmap] = useState(true);
+  const [showHeatmap, setShowHeatmap] = useState(() => {
+    const stored = localStorage.getItem("statusHeatmap");
+    if (stored === null) {
+      localStorage.setItem("statusHeatmap", JSON.stringify(true));
+      return true;
+    }
+    return JSON.parse(stored);
+  });
   const [hasMoved, setHasMoved] = useState(false);
   const [cursorStyle, setCursorStyle] = useState("grab");
   const holdTimer = useRef(null);
@@ -29,7 +36,6 @@ const GithubActivityGraphQL = () => {
       }
     }
 
-    // fallback: pojok kanan bawah
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
     return {
@@ -227,7 +233,6 @@ const GithubActivityGraphQL = () => {
     setDragging(false);
     setCursorStyle("grab");
 
-    // Save posisi ke localStorage
     localStorage.setItem(
       "floating-button-position",
       JSON.stringify({ x: finalX, y: finalY })
@@ -265,16 +270,17 @@ const GithubActivityGraphQL = () => {
 
   const handleClick = () => {
     if (!hasMoved) {
-      setShowHeatmap(true);
+      localStorage.setItem("statusHeatmap", JSON.stringify(true));
+      setShowHeatmap(JSON.parse(localStorage.getItem("statusHeatmap")));
     }
   };
 
   return (
     <>
       {showHeatmap && (
-        <FloatingBox>
+        <FloatingBox setShowHeatmap={setShowHeatmap}>
           <div>
-            <HourlyHeatmap data={data} setShowHeatmap={setShowHeatmap} />
+            <HourlyHeatmap data={data} />
           </div>
         </FloatingBox>
       )}
@@ -282,15 +288,16 @@ const GithubActivityGraphQL = () => {
         <button
           onClick={handleClick}
           onMouseDown={startDrag}
-          onMouseUp={stopDrag} // penting juga buat reset timer
+          onMouseUp={stopDrag}
           style={{
             position: "fixed",
             zIndex: 9999,
             left: `${buttonPosition.x}px`,
             top: `${buttonPosition.y}px`,
-            width: "60px",
-            height: "60px",
-            background: "linear-gradient(145deg, #2a80b9, #34b3f1)",
+            width: "55px",
+            height: "55px",
+            background:
+              "linear-gradient(145deg, rgb(0,0,0,0.1), rgb(0,0,0,0.1))",
             color: "#fff",
             fontSize: "26px",
             borderRadius: "50%",
@@ -299,7 +306,7 @@ const GithubActivityGraphQL = () => {
             boxShadow:
               dragging || cursorStyle === "superGrabbing"
                 ? "inset -4px -4px 10px rgba(255,255,255,0.3), inset 4px 4px 10px rgba(0,0,0,0.3)"
-                : "6px 6px 15px rgba(0,0,0,0.4), -6px -6px 15px rgba(255,255,255,0.1)",
+                : "inset -2px -2px 5px 4px rgba(0,0,0,0.2), 4px 4px 20px 4px rgba(0,0,0,0.8), -1px -1px 8px 1px rgba(91, 114, 150, 0.4)",
             userSelect: "none",
             transition:
               !dragging && hasMoved
@@ -309,10 +316,27 @@ const GithubActivityGraphQL = () => {
               cursorStyle === "grabbing" || cursorStyle === "superGrabbing"
                 ? "scale(0.96)"
                 : "scale(1)",
-            backdropFilter: "blur(4px)",
+            backdropFilter: "blur(3px)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
-          <AiOutlineEye />
+          <div
+            style={{
+              background: "rgba(16, 44, 67, 0.9)",
+              boxShadow:
+                "inset 0 1px 2px 3px rgba(16, 44, 67, 0.7), -1px -1px 3px 1px rgba(170, 170, 170, 0.3), 1px 1px 3px 3px rgba(6, 13, 18, 0.6)",
+              width: "36px",
+              height: "36px",
+              borderRadius: "50%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <FaGithub style={{ fontSize: "20px", color: "#fff" }} />
+          </div>
         </button>
       )}
     </>
