@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/ridwan-portfolio-fullstack-developer/static/css/main.ef520919.css",
-    "main.js": "/ridwan-portfolio-fullstack-developer/static/js/main.2dd55cb1.js",
+    "main.css": "/ridwan-portfolio-fullstack-developer/static/css/main.809717fd.css",
+    "main.js": "/ridwan-portfolio-fullstack-developer/static/js/main.82d21786.js",
     "static/js/187.c45d9643.chunk.js": "/ridwan-portfolio-fullstack-developer/static/js/187.c45d9643.chunk.js",
     "static/js/206.020cae30.chunk.js": "/ridwan-portfolio-fullstack-developer/static/js/206.020cae30.chunk.js",
     "static/js/985.dcbdcbf2.chunk.js": "/ridwan-portfolio-fullstack-developer/static/js/985.dcbdcbf2.chunk.js",
@@ -12,18 +12,26 @@
     "static/media/gameconnectacommunicationhubforgamers.png": "/ridwan-portfolio-fullstack-developer/static/media/gameconnectacommunicationhubforgamers.ad1379d842441aea9068.png",
     "static/media/uidesign.png": "/ridwan-portfolio-fullstack-developer/static/media/uidesign.31eeea0d78f1399e016f.png",
     "static/media/englishlearningplatformwithaiintegration.png": "/ridwan-portfolio-fullstack-developer/static/media/englishlearningplatformwithaiintegration.67bdc30acb3ae9dfe96e.png",
+    "static/media/fa-solid-900.ttf": "/ridwan-portfolio-fullstack-developer/static/media/fa-solid-900.2582b0e4bcf85eceead0.ttf",
     "static/media/traininginformationsystem.png": "/ridwan-portfolio-fullstack-developer/static/media/traininginformationsystem.06a291a28e0482b5a226.png",
     "static/media/datapasienrs.png": "/ridwan-portfolio-fullstack-developer/static/media/datapasienrs.829eb6f734ba3e41cb23.png",
     "static/media/todolist.png": "/ridwan-portfolio-fullstack-developer/static/media/todolist.7afac02b75de400551fa.png",
+    "static/media/fa-brands-400.ttf": "/ridwan-portfolio-fullstack-developer/static/media/fa-brands-400.1815e00441357e01619e.ttf",
     "static/media/hospitalinformationsystem.png": "/ridwan-portfolio-fullstack-developer/static/media/hospitalinformationsystem.b8d5ee187e586b04b5f1.png",
+    "static/media/fa-solid-900.woff2": "/ridwan-portfolio-fullstack-developer/static/media/fa-solid-900.2463b90d9a316e4e5294.woff2",
     "static/media/pp_ridwan.jpg": "/ridwan-portfolio-fullstack-developer/static/media/pp_ridwan.84b6c013e9f44e13a7c4.jpg",
+    "static/media/fa-brands-400.woff2": "/ridwan-portfolio-fullstack-developer/static/media/fa-brands-400.c210719e60948b211a12.woff2",
     "static/media/about.png": "/ridwan-portfolio-fullstack-developer/static/media/about.aee0f771fbfc1e7b8fa8.png",
+    "static/media/fa-regular-400.ttf": "/ridwan-portfolio-fullstack-developer/static/media/fa-regular-400.914997e1bdfc990d0897.ttf",
     "static/media/home-bg.jpg": "/ridwan-portfolio-fullstack-developer/static/media/home-bg.dc52d5d40a40b13154b0.jpg",
+    "static/media/fa-regular-400.woff2": "/ridwan-portfolio-fullstack-developer/static/media/fa-regular-400.89999bdf5d835c012025.woff2",
+    "static/media/fa-v4compatibility.ttf": "/ridwan-portfolio-fullstack-developer/static/media/fa-v4compatibility.da94ef451f4969af06e6.ttf",
+    "static/media/fa-v4compatibility.woff2": "/ridwan-portfolio-fullstack-developer/static/media/fa-v4compatibility.ea8f94e1d22e0d35ccd4.woff2",
     "index.html": "/ridwan-portfolio-fullstack-developer/index.html",
     "static/media/pre.svg": "/ridwan-portfolio-fullstack-developer/static/media/pre.d4812f51c8c80976eaab.svg"
   },
   "entrypoints": [
-    "static/css/main.ef520919.css",
-    "static/js/main.2dd55cb1.js"
+    "static/css/main.809717fd.css",
+    "static/js/main.82d21786.js"
   ]
 }
