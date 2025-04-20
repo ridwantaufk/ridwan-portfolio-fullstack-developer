@@ -12,7 +12,7 @@ function ResumeNew() {
 
   useEffect(() => {
     const loadingTask = getDocument(
-      `${window.location.origin}/ridwan-portfolio-fullstack-developer/assets/CV_Ridwan_Taufik_Programmer.pdf`
+      `${process.env.PUBLIC_URL}/assets/CV_Ridwan_Taufik_Programmer.pdf`
     );
 
     loadingTask.promise.then((pdf) => {
@@ -53,7 +53,7 @@ function ResumeNew() {
         >
           <Button
             variant="primary"
-            href={`${window.location.origin}/ridwan-portfolio-fullstack-developer/assets/CV_Ridwan_Taufik_Programmer.pdf`}
+            href={`${process.env.PUBLIC_URL}/assets/CV_Ridwan_Taufik_Programmer.pdf`}
             target="_blank"
             download="CV_Ridwan_Taufik_Programmer.pdf"
             className="download-btn"
